@@ -21,16 +21,16 @@ public class HomeMenu extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_menu);
 
-        Typeface titleFont = Typeface.createFromAsset(getAssets(), "fonts/Anton.ttf");
-        title = (TextView)findViewById(R.id.menuTitle);
-        input = (Button)findViewById(R.id.inputButton);
-        viewer = (Button)findViewById(R.id.viewerButton);
-        match = (Button)findViewById(R.id.matchButton);
+       // Typeface titleFont = Typeface.createFromAsset(getAssets(), "fonts/Anton.ttf");
+       // title = (TextView)findViewById(R.id.menuTitle);
+       // input = (Button)findViewById(R.id.inputButton);
+       // viewer = (Button)findViewById(R.id.viewerButton);
+       // match = (Button)findViewById(R.id.matchButton);
 
-        title.setTypeface(titleFont);
-        input.setTypeface(titleFont);
-        viewer.setTypeface(titleFont);
-        match.setTypeface(titleFont);
+       // title.setTypeface(titleFont);
+       // input.setTypeface(titleFont);
+       // viewer.setTypeface(titleFont);
+       // match.setTypeface(titleFont);
 
         input.setOnClickListener(new View.OnClickListener() {
             @Override
