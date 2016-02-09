@@ -39,7 +39,17 @@ public class Input extends ActionBarActivity //appcompatactivity necessary for n
 
         //for tabs
         PagerAdapter f = new PagerAdapter(
-                        getSupportFragmentManager());
+                getSupportFragmentManager()) {
+            @Override
+            public int getCount() {
+                return 0;
+            }
+
+            @Override
+            public boolean isViewFromObject(View view, Object object) {
+                return false;
+            }
+        };
         final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
         viewPager.setAdapter(f);
 
