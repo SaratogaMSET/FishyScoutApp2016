@@ -1,10 +1,14 @@
 package com.example.ningning.msetscoutapp;
 
+import android.annotation.TargetApi;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
@@ -25,107 +29,84 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 
+import com.astuetz.PagerSlidingTabStrip;
+
 
 //contains the three fragments: autonomous, teleop, postmatch
 //activity should be using "swipe view" with three tabs at top, one for each fragment
-public class Input extends ActionBarActivity //appcompatactivity necessary for navigation drawer-i think
-        {
+@TargetApi(11)
+public class Input extends FragmentActivity {//appcompatactivity necessary for navigation drawer-i think
+
+    private static final int NUM_PAGES = 3;
+    private ViewPager mPager;
+    private PagerAdapter mPagerAdapter;
+    private String tabTitles[] = new String[] { "Autonomous", "Teleop", "Post Match" };
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_input);
 
+        // Instantiate a ViewPager and a PagerAdapter.
+        mPager = (ViewPager) findViewById(R.id.pager);
+        mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
+        mPager.setAdapter(mPagerAdapter);
 
-        //for tabs
-        PagerAdapter f = new PagerAdapter(
-                getSupportFragmentManager()) {
-            @Override
-            public int getCount() {
-                return 0;
-            }
-
-            @Override
-            public boolean isViewFromObject(View view, Object object) {
-                return false;
-            }
-        };
-        final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
-        viewPager.setAdapter(f);
-
-        final ActionBar actionBar = getSupportActionBar();
-        // Specify that tabs should be displayed in the action bar.
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-
-        // Create a tab listener that is called when the user changes tabs.
-        ActionBar.TabListener tabListener = new ActionBar.TabListener() {
-            public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
-                // show the given tab
-                viewPager.setCurrentItem(tab.getPosition());
-            }
-
-            public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
-                // hide the given tab
-            }
-
-            public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
-                // probably ignore this event
-            }
-        };
-
-        //creation of three tabs in the action bar and icons
-        actionBar.addTab(
-                actionBar.newTab()
-                        .setText("Home")
-                        .setTabListener(tabListener));
-        actionBar.addTab(
-                actionBar.newTab()
-                        .setText("Input")
-                        .setTabListener(tabListener));
-        actionBar.addTab(
-                actionBar.newTab()
-                        .setText("Viewer")
-                        .setTabListener(tabListener));
-        actionBar.addTab(
-                actionBar.newTab()
-                        .setText("Match")
-                        .setTabListener(tabListener));
-
-        // Update current tab when page is changed (or swiped)
-        viewPager.setOnPageChangeListener(
-                new ViewPager.SimpleOnPageChangeListener() {
-                    @Override
-                    public void onPageSelected(int position) {
-
-                        actionBar.setSelectedNavigationItem(position);
-                    }
-                });
+        PagerSlidingTabStrip tabsStrip = (PagerSlidingTabStrip) findViewById(R.id.tabs);
+        tabsStrip.setViewPager(mPager);
     }
 
-            /**
-             * don't need this currently
-             @Override
-             public boolean onCreateOptionsMenu(Menu menu) {
-             // Inflate the menu; this adds items to the action bar if it is present.
-             getMenuInflater().inflate(R.menu.menu_main, menu);
-             return true;
-             }
-             **/
+    @Override
+    public void onBackPressed() {
+        if (mPager.getCurrentItem() == 0) {
+            // If the user is currently looking at the first step, allow the system to handle the
+            // Back button. This calls finish() on this activity and pops the back stack.
+            super.onBackPressed();
+        } else {
+            // Otherwise, select the previous step.
+            mPager.setCurrentItem(mPager.getCurrentItem() - 1);
+        }
+    }
 
-            @Override
-            public boolean onOptionsItemSelected(MenuItem item) {
-                // Handle action bar item clicks here. The action bar will
-                // automatically handle clicks on the Home/Up button, so long
-                // as you specify a parent activity in AndroidManifest.xml.
-                int id = item.getItemId();
 
-                //noinspection SimplifiableIfStatement
-                if (id == R.id.action_settings) {
-                    return true;
-                }
+    /**
+     * A simple pager adapter that represents 5 ScreenSlidePageFragment objects, in
+     * sequence.
+     */
+    private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
+        public ScreenSlidePagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
 
-                return super.onOptionsItemSelected(item);
+        @Override
+        public Fragment getItem(int position) {
+            // first tab is the home tab. Displays that fragment
+            if (position == 0) {
+                return new Autonomous();
+            }
+            // next tab is the Manual tab. Displays that fragment
+            if (position == 1) {
+                return new Teleop();
+            }
+            // next tab is the Manual tab. Displays that fragment
+            else {
+                return new PostMatch();
             }
 
         }
 
+        @Override
+        public int getCount() {
+            return NUM_PAGES;
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return tabTitles[position];
+        }
+
+
+    }
+
+}

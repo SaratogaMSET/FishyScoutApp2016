@@ -20,6 +20,8 @@ import java.util.ArrayList;
 
 //part 1 of input activity
 public class Autonomous extends Fragment {
+    public static final String ARG_OBJECT = "object";
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState) {
         View in = inflater.inflate(R.layout.activity_autonomous, container,false); // adds Autonomous tab to input activity
         return in;
