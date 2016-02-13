@@ -21,6 +21,8 @@
         app:pstsShouldExpand="true"
         app:pstsTextAllCaps="true"
         app:pstsIndicatorColor="#69f0ae"
+        app:pstsUnderlineColor="#009688"
+        app:pstsDividerColor="#009688"
         android:layout_width="match_parent"
         android:layout_height="48dp" />
 </RelativeLayout>

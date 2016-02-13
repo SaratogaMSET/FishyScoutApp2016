@@ -1,23 +1,221 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:fillViewport="true"
+    android:layout_height="fill_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.ningning.msetscoutapp.Autonomous"
+    android:id="@+id/scrollView">
+
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.ningning.msetscoutapp.Autonomous"
     >
 
-    <TextView
-        android:layout_width="wrap_content"
+    <TableLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Auto"
-        android:id="@+id/textView4"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="198dp" />
+        android:layout_marginTop="50dp"
+        android:id="@+id/firstTableLayout">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/spyTableRow">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Spy"
+                android:textAppearance="@android:style/TextAppearance.Large"
+                android:id="@+id/spyTextView" />
+
+            <ToggleButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textOn="Yes"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textOff="No"
+                android:id="@+id/spyToggleButton"
+                android:checked="false" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:id="@+id/defenseTableRow">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reach Defense"
+                android:layout_marginRight="30dp"
+                android:textAppearance="@android:style/TextAppearance.Large"
+                android:id="@+id/defenseTextView" />
+
+            <ToggleButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textOn="Yes"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textOff="No"
+                android:id="@+id/defenseToggleButton" />
+        </TableRow>
+
+    </TableLayout>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/crossTableRow"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/firstTableLayout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cross Defense"
+            android:textAppearance="@android:style/TextAppearance.Large"
+            android:id="@+id/crossTextView" />
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/crossSpinner"
+            android:spinnerMode="dropdown" />
+    </TableRow>
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_below="@+id/crossTableRow"
+            android:id = "@+id/highTextTableRow">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="High Goals"
+                android:textAppearance="@android:style/TextAppearance.Large"
+                android:id="@+id/highTextView" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" "
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginLeft="20dp"
+                android:id="@+id/highGoalTextView"
+                 />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/highTextTableRow"
+            android:id = "@+id/highButtonTableRow">
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="0.33"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:padding="20dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/highOneButton" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="0.33"
+                android:layout_height="wrap_content"
+                android:text="O"
+                android:padding="20dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/highZeroButton" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="0.33"
+                android:layout_height="wrap_content"
+                android:text="X"
+                android:padding="20dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/highDeleteButton" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_below="@+id/highButtonTableRow"
+            android:id="@+id/lowTextTableRow">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Low Goals"
+                android:textAppearance="@android:style/TextAppearance.Large"
+                android:id="@+id/lowTextView" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" "
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/lowGoalTextView"
+                android:layout_marginLeft="20dp" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/lowTextTableRow"
+            android:id="@+id/lowButtonTableRow">
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="0.33"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:padding="20dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/lowOneButton" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="0.33"
+                android:layout_height="wrap_content"
+                android:text="O"
+                android:padding="20dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/lowZeroButton" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="0.33"
+                android:layout_height="wrap_content"
+                android:text="X"
+                android:padding="20dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/lowDeleteButton" />
+
+        </TableRow>
+
+
 </RelativeLayout>
+</ScrollView>
