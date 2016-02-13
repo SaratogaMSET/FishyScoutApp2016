@@ -9,94 +9,35 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.alice.postmatch.MainActivity">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Notes"
+        android:layout_marginTop="50dp"
+        android:id="@+id/textNotes"
+        android:layout_column="0" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editNotes"
+        android:scrollHorizontally="true"
+        android:inputType="textMultiLine"
+        android:hint="Enter notes here"
+        android:layout_below="@id/textNotes"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:scrollbars="none"
+        android:layout_marginBottom="10dp"/>
+
     <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:id="@+id/buttonLayout"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"></TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"></TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"></TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Notes"
-                android:id="@+id/textView"
-                android:layout_column="0" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"></TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"></TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"></TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"></TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"></TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"></TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"></TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/editText"
-                android:layout_column="0"
-                android:hint="Enter notes here."
-                android:layout_marginBottom="100dp"/>
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"></TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"></TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"></TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"></TableRow>
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/editNotes">
 
         <TableRow
             android:layout_width="match_parent"
@@ -105,27 +46,20 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Breach"
+                android:layout_marginRight="30dp"
                 android:id="@+id/textView2"
-                android:layout_column="0" />
+                 />
 
             <ToggleButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New ToggleButton"
                 android:id="@+id/toggleButton"
-                android:layout_column="6" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"></TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
+                android:textOff="No"
+                android:textOn="Yes"
+                 />
         </TableRow>
 
         <TableRow
@@ -135,79 +69,68 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Capture"
+                android:layout_marginRight="30dp"
                 android:id="@+id/textView3"
-                android:layout_column="0" />
+                 />
 
             <ToggleButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New ToggleButton"
+                android:textOff="No"
+                android:textOn="Yes"
                 android:id="@+id/toggleButton2"
-                android:layout_column="6" />
+                />
         </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"></TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"></TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"></TableRow>
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"></TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <RadioGroup
-                android:layout_width="match_parent"
-                android:layout_height="fill_parent"
-                android:layout_column="0"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_span="7">
-
-                <RadioButton
-                    android:layout_width="0dp"
-                    android:layout_weight="0.33"
-                    android:layout_height="match_parent"
-                    android:text="Win"
-                    android:id="@+id/win"
-                    android:checked="true" />
-
-                <RadioButton
-                    android:layout_width="0dp"
-                    android:layout_weight="0.33"
-                    android:layout_height="wrap_content"
-                    android:text="Draw"
-                    android:id="@+id/draw"
-                    android:checked="false" />
-
-                <RadioButton
-                    android:layout_width="0dp"
-                    android:layout_weight="0.33"
-                    android:layout_height="wrap_content"
-                    android:text="Lose"
-                    android:id="@+id/lose"
-                    android:checked="false" />
-            </RadioGroup>
         </TableRow>
     </TableLayout>
+
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:id="@+id/radiogroup"
+            android:orientation="horizontal"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="10dp"
+            android:layout_below="@id/buttonLayout"
+            android:layout_span="7">
+
+            <RadioButton
+                android:layout_width="0dp"
+                android:layout_weight="0.33"
+                android:layout_height="match_parent"
+                android:text="Win"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/winRadButton"
+                android:checked="true" />
+
+            <RadioButton
+                android:layout_width="0dp"
+                android:layout_weight="0.33"
+                android:layout_height="wrap_content"
+                android:text="Draw"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/drawRadButton"
+                android:checked="false" />
+
+            <RadioButton
+                android:layout_width="0dp"
+                android:layout_weight="0.33"
+                android:layout_height="wrap_content"
+                android:text="Lose"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/loseRadButton"
+                android:checked="false" />
+        </RadioGroup>
+    
 </RelativeLayout>
 
