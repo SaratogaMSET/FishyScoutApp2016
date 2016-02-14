@@ -22,7 +22,7 @@
     <TableLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="60dp"
         android:id="@+id/firstTableLayout">
 
         <TableRow
@@ -31,43 +31,60 @@
             android:id="@+id/spyTableRow">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight=".25"
                 android:layout_height="wrap_content"
                 android:text="Spy"
                 android:textAppearance="@android:style/TextAppearance.Large"
                 android:id="@+id/spyTextView" />
 
             <ToggleButton
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight=".25"
                 android:layout_height="wrap_content"
                 android:textOn="Yes"
+                android:padding="20dp"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textOff="No"
                 android:id="@+id/spyToggleButton"
                 android:checked="false" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_weight=".5"
+                android:layout_height="20px"
+                android:layout_column="2" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
             android:id="@+id/defenseTableRow">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight=".25"
                 android:layout_height="wrap_content"
                 android:text="Reach Defense"
-                android:layout_marginRight="30dp"
                 android:textAppearance="@android:style/TextAppearance.Large"
                 android:id="@+id/defenseTextView" />
 
             <ToggleButton
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight=".25"
                 android:layout_height="wrap_content"
                 android:textOn="Yes"
+                android:padding="20dp"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textOff="No"
                 android:id="@+id/defenseToggleButton" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_weight=".5"
+                android:layout_height="20px"
+                android:layout_column="2" />
         </TableRow>
 
     </TableLayout>
@@ -76,7 +93,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/crossTableRow"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="40dp"
         android:layout_below="@+id/firstTableLayout">
 
         <TextView
@@ -98,7 +115,7 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="40dp"
             android:layout_below="@+id/crossTableRow"
             android:id = "@+id/highTextTableRow">
 
@@ -159,7 +176,7 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="40dp"
             android:layout_below="@+id/highButtonTableRow"
             android:id="@+id/lowTextTableRow">
 

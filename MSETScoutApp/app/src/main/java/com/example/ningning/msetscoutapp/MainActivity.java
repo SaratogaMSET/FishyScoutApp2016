@@ -82,9 +82,9 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_match) {
 
-        } else if (id == R.id.nav_share) {  //just filler "subcategories", in case we need them in the future
+        } else if (id == R.id.nav_usb) {
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_bluetooth) {
 
         }
 
