@@ -28,6 +28,8 @@ import android.graphics.drawable.Drawable;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.astuetz.PagerSlidingTabStrip;
 
@@ -35,7 +37,9 @@ import com.astuetz.PagerSlidingTabStrip;
 //contains the three fragments: autonomous, teleop, postmatch
 //activity should be using "swipe view" with three tabs at top, one for each fragment
 @TargetApi(11)
-public class Input extends FragmentActivity {//appcompatactivity necessary for navigation drawer-i think
+public class Input extends FragmentActivity {
+    Button submit;
+
 
     private static final int NUM_PAGES = 3;
     private ViewPager mPager;
@@ -55,6 +59,7 @@ public class Input extends FragmentActivity {//appcompatactivity necessary for n
 
         PagerSlidingTabStrip tabsStrip = (PagerSlidingTabStrip) findViewById(R.id.tabs);
         tabsStrip.setViewPager(mPager);
+
     }
 
     @Override

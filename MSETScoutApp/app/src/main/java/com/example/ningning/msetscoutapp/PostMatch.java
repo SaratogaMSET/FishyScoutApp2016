@@ -3,6 +3,7 @@ package com.example.ningning.msetscoutapp;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Vibrator;
@@ -27,6 +28,10 @@ public class PostMatch extends Fragment {
     ToggleButton lose;
     ToggleButton tie;
 
+    Button submit;
+
+    String match;
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState) {
         View in = inflater.inflate(R.layout.activity_post_match, container, false); // adds PostMatch tab to input activity
 
@@ -37,6 +42,25 @@ public class PostMatch extends Fragment {
         win.setOnCheckedChangeListener(changeChecker);
         lose.setOnCheckedChangeListener(changeChecker);
         tie.setOnCheckedChangeListener(changeChecker);
+
+      /*  if (saveInstanceState == null) {
+            Bundle extras = getIntent().getExtras();
+            if (extras == null) {
+            } else {
+                match =
+            }
+        }
+
+        submit = (Button) in.findViewById(R.id.submitButton);
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent toConfirmation = new Intent(getActivity(), Confirmation.class);
+                toConfirmation.putExtra("matchText", )
+                startActivity(toConfirmation);
+            }
+        });*/
+
         return in;
     }
 

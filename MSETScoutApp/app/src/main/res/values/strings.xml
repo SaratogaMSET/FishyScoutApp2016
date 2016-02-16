@@ -12,8 +12,13 @@
         <item>Drawbridge</item>
         <item>Ramparts</item>
         <item>Rock Wall</item>
+        <item>Portcullis</item>
+        <item>Moat</item>
+        <item>Sally Port</item>
+        <item>Rough Terrain</item>
     </string-array>
     <string name="title_activity_autonomous">Autonomous</string>
     <string name="title_activity_teleop">Teleop</string>
     <string name="title_activity_post_match">PostMatch</string>
+    <string name="title_activity_confirmation">Confirmation</string>
 </resources>

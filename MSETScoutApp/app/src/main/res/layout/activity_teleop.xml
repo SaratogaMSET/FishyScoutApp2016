@@ -80,7 +80,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="50dp">
 
-            <Space
+         <!--   <Space
                 android:layout_width="0dp"
                 android:layout_weight=".6"
                 android:layout_height="20px"
@@ -112,7 +112,7 @@
                 android:paddingBottom="20dp"
                 android:paddingTop="20dp"
                 android:text="+"
-                android:id="@+id/plus1" />
+                android:id="@+id/plus1" /> -->
         </TableRow>
 
         <TableRow
@@ -172,7 +172,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="50dp">
-            <Space
+        <!--    <Space
                 android:layout_width="0dp"
                 android:layout_weight=".6"
                 android:layout_height="20px"
@@ -204,7 +204,7 @@
                 android:paddingBottom="20dp"
                 android:paddingTop="20dp"
                 android:text="+"
-                android:id="@+id/plus2" />
+                android:id="@+id/plus2" /> -->
         </TableRow>
 
         <TableRow
@@ -270,7 +270,7 @@
                 android:layout_height="20px"
                 tools:targetApi="ice_cream_sandwich" />
 
-            <Button
+        <!--    <Button
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="0dp"
                 android:layout_weight=".1"
@@ -296,7 +296,7 @@
                 android:paddingBottom="20dp"
                 android:paddingTop="20dp"
                 android:text="+"
-                android:id="@+id/plus3" />
+                android:id="@+id/plus3" /> -->
         </TableRow>
 
         <TableRow
@@ -356,7 +356,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="50dp">
-            <Space
+        <!--    <Space
                 android:layout_width="0dp"
                 android:layout_weight=".6"
                 android:layout_height="20px"
@@ -388,7 +388,7 @@
                 android:paddingBottom="20dp"
                 android:paddingTop="20dp"
                 android:text="+"
-                android:id="@+id/plus4" />
+                android:id="@+id/plus4" /> -->
         </TableRow>
 
         <TableRow
@@ -449,7 +449,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="50dp"
             android:id="@+id/finalrow">
-            <Space
+        <!--    <Space
                 android:layout_width="0dp"
                 android:layout_weight=".6"
                 android:layout_height="20px"
@@ -481,7 +481,7 @@
                 android:paddingBottom="20dp"
                 android:paddingTop="20dp"
                 android:text="+"
-                android:id="@+id/plus5" />
+                android:id="@+id/plus5" /> -->
         </TableRow>
     </TableLayout>
 

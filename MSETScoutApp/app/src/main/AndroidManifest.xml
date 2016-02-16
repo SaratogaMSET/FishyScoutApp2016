@@ -33,6 +33,10 @@
         <activity
             android:name=".PostMatch"
             android:label="@string/title_activity_post_match"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Confirmation"
+            android:label="@string/title_activity_confirmation"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
