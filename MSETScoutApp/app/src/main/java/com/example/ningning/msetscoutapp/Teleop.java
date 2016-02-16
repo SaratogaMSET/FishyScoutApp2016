@@ -28,8 +28,6 @@ public class Teleop extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState) {
         View in = inflater.inflate(R.layout.activity_teleop, container,false); // adds Teleop tab to input activity
 
-        
-
         hang = (ToggleButton) in.findViewById(R.id.hangToggle);
         challenge = (ToggleButton) in.findViewById(R.id.challengeToggle);
         none = (ToggleButton) in.findViewById(R.id.noneToggle);

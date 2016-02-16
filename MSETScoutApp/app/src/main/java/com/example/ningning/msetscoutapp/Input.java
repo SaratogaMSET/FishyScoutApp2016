@@ -11,6 +11,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -28,6 +29,7 @@ import android.graphics.drawable.Drawable;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -40,12 +42,14 @@ import com.astuetz.PagerSlidingTabStrip;
 public class Input extends FragmentActivity {
     Button submit;
 
+    public static String matchText;
 
     private static final int NUM_PAGES = 3;
-    private ViewPager mPager;
-    private PagerAdapter mPagerAdapter;
-    private String tabTitles[] = new String[] { "Autonomous", "Teleop", "Post Match" };
+    public ViewPager mPager;
+    public PagerAdapter mPagerAdapter;
+    public String tabTitles[] = new String[]{"Autonomous", "Teleop", "Post Match"};
 
+    public RoboInfo inputinfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,9 +61,32 @@ public class Input extends FragmentActivity {
         mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         mPager.setAdapter(mPagerAdapter);
 
-        PagerSlidingTabStrip tabsStrip = (PagerSlidingTabStrip) findViewById(R.id.tabs);
+
+        final PagerSlidingTabStrip tabsStrip = (PagerSlidingTabStrip) findViewById(R.id.tabs);
         tabsStrip.setViewPager(mPager);
 
+
+        tabsStrip.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+           /*     if (position == 1) {
+                    Autonomous auto = new Autonomous();
+                    inputinfo.setMatchText(autoInfo.getMatchText());
+
+
+
+                }*/
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+            }
+        });
     }
 
     @Override
@@ -76,34 +103,34 @@ public class Input extends FragmentActivity {
 
 
     /**
-     * A simple pager adapter that represents 5 ScreenSlidePageFragment objects, in
+     * A simple pager adapter that represents 3 ScreenSlidePageFragment objects, in
      * sequence.
      */
-    private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
+    public class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
         public ScreenSlidePagerAdapter(FragmentManager fm) {
             super(fm);
         }
 
         @Override
-        public Fragment getItem(int position) {
-            // first tab is the home tab. Displays that fragment
-            if (position == 0) {
-                return new Autonomous();
-            }
-            // next tab is the Manual tab. Displays that fragment
-            if (position == 1) {
-                return new Teleop();
-            }
-            // next tab is the Manual tab. Displays that fragment
-            else {
-                return new PostMatch();
-            }
-
+        public int getCount() {
+            return NUM_PAGES;
         }
 
         @Override
-        public int getCount() {
-            return NUM_PAGES;
+         public Fragment getItem(int position) {
+
+            if (position == 0) {
+                Autonomous auto = new Autonomous();
+                return auto;
+            }
+
+            if (position == 1) {
+                return new Teleop();
+
+            } else {
+                return new PostMatch();
+            }
+
         }
 
         @Override

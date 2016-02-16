@@ -1,16 +1,18 @@
 package com.example.ningning.msetscoutapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-public class Confirmation extends AppCompatActivity {
+public class Confirmation extends AppCompatActivity{
     TextView matchD;
     TextView teamD;
     TextView scouterD;
@@ -21,10 +23,16 @@ public class Confirmation extends AppCompatActivity {
     TextView lowGoalD1;
     TextView ballD;
 
+    //DataUpdate dataUpdate;
+    RoboInfo info;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_confirmation);
 
         matchD = (TextView) findViewById(R.id.matchDisplay);
         teamD = (TextView) findViewById(R.id.teamDisplay);
@@ -36,20 +44,22 @@ public class Confirmation extends AppCompatActivity {
         lowGoalD1 = (TextView) findViewById(R.id.lowGoalDisplay);
         ballD = (TextView) findViewById(R.id.ballDisplay);
 
+      /*  Log.d("Con", "5");
         if (savedInstanceState == null) {
             Bundle extras = getIntent().getExtras();
+            Log.d("Con", "6");
             if (extras == null) {
+                Log.d("Con", "7");
             } else {
-                matchD.setText(extras.getString("matchText"));
-                teamD.setText(extras.getString("teamText"));
-                scouterD.setText(extras.getString("scouterText"));
-                //  spyD.setText(extras.getString("matchText"));
-                // reachD.setText(extras.getString("matchText"));
-                //crossD.setText(extras.getString("matchText"));
+                matchD.setText(extras.getString("matchT"));
+                Log.d("Con", "8");
             }
-
-        }
-
+        }*/
+     /*   Log.d("con", "4");
+        Input in = new Input();
+        Log.d("con", "5");
+        matchD.setText(in.inputinfo.getMatchText());
+        Log.d("con", "6");*/
     }
 
 

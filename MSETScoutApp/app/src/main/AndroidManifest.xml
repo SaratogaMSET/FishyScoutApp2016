@@ -22,17 +22,20 @@
             android:name=".Input"
             android:label="@string/title_activity_input"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
+        <fragment
             android:name=".Autonomous"
             android:label="@string/title_activity_autonomous"
+            android:id="@+id/autoFrag"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
+        <fragment
             android:name=".Teleop"
             android:label="@string/title_activity_teleop"
+            android:id="@+id/teleFrag"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
+        <fragment
             android:name=".PostMatch"
             android:label="@string/title_activity_post_match"
+            android:id="@+id/postFrag"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Confirmation"

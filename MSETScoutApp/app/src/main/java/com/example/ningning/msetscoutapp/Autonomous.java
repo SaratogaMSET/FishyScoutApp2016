@@ -1,13 +1,16 @@
 package com.example.ningning.msetscoutapp;
 
+import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,8 +46,6 @@ public class Autonomous extends Fragment {
 
     Button submit;
 
-    static
-
     EditText matchText;
     EditText teamText;
     EditText scouterText;
@@ -52,9 +53,12 @@ public class Autonomous extends Fragment {
     ToggleButton reachButton;
     Spinner crossSpinner;
 
+    public static RoboInfo autoInfo;
+
 
     public static final String ARG_OBJECT = "object";
 
+    @TargetApi(Build.VERSION_CODES.GINGERBREAD)
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState) {
         View in = inflater.inflate(R.layout.activity_autonomous, container,false); // adds Autonomous tab to input activity
 
@@ -116,6 +120,13 @@ public class Autonomous extends Fragment {
             }
         });
 
+      //  matchText = (EditText)in.findViewById(R.id.matchNumberEdit);
+   //     autoInfo.setMatchText(matchText.getText().toString());
+
+      /*  if (matchText.getText().toString() != null && !matchText.getText().toString().isEmpty()) {
+            String matchT = matchText.getText().toString();
+        }*/
+
         lowDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -124,9 +135,20 @@ public class Autonomous extends Fragment {
                 }
             }
         });
-        matchText = (EditText) in.findViewById(R.id.matchNumberEdit);
-        Intent toActivity = new Intent(getActivity().getBaseContext(), Input.class);
-        toActivity.putExtra("matchText", matchText.getText().toString());
+
+
+        /*View fromPost = inflater.inflate(R.layout.activity_post_match, null);
+        submit = (Button) fromPost.findViewById(R.id.submitButton);
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent toConfirmation = new Intent(getActivity(), Confirmation.class);
+                Log.d("auto", "9");
+                toConfirmation.putExtra("matchT", matchText.getText().toString());
+                Log.d("auto", "10");
+                startActivity(toConfirmation);
+            }
+        });*/
 
         return in;
     }
