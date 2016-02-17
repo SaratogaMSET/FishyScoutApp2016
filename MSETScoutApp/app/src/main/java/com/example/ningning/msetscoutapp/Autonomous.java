@@ -57,8 +57,12 @@ public class Autonomous extends Fragment {
 
     Button save;
     TextView matchD;
+    String spy = "";
+    public String high = "";
+    public String low = "";
 
-    private RoboInfo autoInfo = new RoboInfo();
+
+ //   private RoboInfo autoInfo = new RoboInfo();
 
     @TargetApi(Build.VERSION_CODES.GINGERBREAD)
     public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState) {
@@ -88,14 +92,18 @@ public class Autonomous extends Fragment {
         highHit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                highView.append("1");
+                high += "1";
+                highView.setText(high);
+
             }
         });
 
         highMiss.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                highView.append("O");
+                high += "O";
+                highView.setText(high);
+
             }
         });
 
@@ -103,7 +111,9 @@ public class Autonomous extends Fragment {
             @Override
             public void onClick(View v) {
                 if (highView.getText().length() > 0) {
-                    highView.setText(highView.getText().subSequence(0, highView.getText().length() - 1));
+                    high = high.substring(0, high.length() -1);
+                    highView.setText(high);
+
                 }
             }
         });
@@ -111,14 +121,16 @@ public class Autonomous extends Fragment {
         lowHit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                lowView.append("1");
+                low += "1";
+                lowView.setText(low);
             }
         });
 
         lowMiss.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                lowView.append("O");
+                low += "O";
+                lowView.setText(low);
             }
         });
 
@@ -135,13 +147,20 @@ public class Autonomous extends Fragment {
             @Override
             public void onClick(View v) {
                 if (lowView.getText().length() > 0) {
-                    lowView.setText(lowView.getText().subSequence(0, lowView.getText().length() - 1));
+                    low = low.substring(0, low.length() -1);
+                    lowView.setText(low);
                 }
             }
         });
 
         save = (Button)in.findViewById(R.id.saveButton1);
         matchText = (EditText)in.findViewById(R.id.matchNumberEdit);
+        teamText = (EditText) in.findViewById(R.id.teamNumberEdit);
+        scouterText = (EditText) in.findViewById(R.id.scouterNameEdit);
+        spyButton = (ToggleButton) in.findViewById(R.id.spyToggleButton);
+        reachButton = (ToggleButton) in.findViewById(R.id.reachDefenseToggleButton);
+        crossSpinner = (Spinner) in.findViewById(R.id.crossDefenseSpinner);
+
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -150,6 +169,38 @@ public class Autonomous extends Fragment {
               //  TextView text = (TextView) con.findViewById(R.id.matchDisplay);
                // text.append(matchText.getText().toString());
                 Input.myBundle.putString("match", matchText.getText().toString());
+                Input.myBundle.putString("team", teamText.getText().toString());
+                Input.myBundle.putString("scout", scouterText.getText().toString());
+                if (spyButton.isChecked()) {
+                    Input.myBundle.putString("spy", "Yes");
+                }
+                else {
+                    Input.myBundle.putString("spy", "No");
+                }
+                if (reachButton.isChecked()) {
+                    Input.myBundle.putString("reach", "Yes");
+                }
+                else {
+                    Input.myBundle.putString("reach", "No");
+                }
+                Input.myBundle.putString("highV", high);
+                Input.myBundle.putString("lowV", low);
+                if (zero.isChecked()) {
+                    Input.myBundle.putString("balls", "0");
+                }
+                else if (one.isChecked()) {
+                    Input.myBundle.putString("balls", "1");
+                }
+                else if (two.isChecked()) {
+                    Input.myBundle.putString("balls", "2");
+                }
+                else if (three.isChecked()) {
+                    Input.myBundle.putString("balls", "3");
+                }
+                else {
+                    Input.myBundle.putString("balls", "none");
+                }
+                Input.myBundle.putString("cross", crossSpinner.getSelectedItem().toString());
             }
         });
 

@@ -80,13 +80,21 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="50dp">
 
-         <!--   <Space
+             <Space
                 android:layout_width="0dp"
                 android:layout_weight=".6"
-                android:layout_height="20px"
+                android:layout_height="wrap_content"
                 tools:targetApi="ice_cream_sandwich" />
+            <TextView
+                android:layout_weight=".4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:id="@+id/ratingText1"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                />
 
-            <Button
+         <!--   <Button
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="0dp"
                 android:layout_weight=".1"
@@ -172,6 +180,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="50dp">
+            <Space
+                android:layout_width="0dp"
+                android:layout_weight=".6"
+                android:layout_height="wrap_content"
+                tools:targetApi="ice_cream_sandwich" />
+            <TextView
+                android:layout_weight=".4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:id="@+id/ratingText2"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                />
         <!--    <Space
                 android:layout_width="0dp"
                 android:layout_weight=".6"
@@ -267,8 +288,16 @@
             <Space
                 android:layout_width="0dp"
                 android:layout_weight=".6"
-                android:layout_height="20px"
+                android:layout_height="wrap_content"
                 tools:targetApi="ice_cream_sandwich" />
+            <TextView
+                android:layout_weight=".4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:id="@+id/ratingText3"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                />
 
         <!--    <Button
                 style="?android:attr/buttonStyleSmall"
@@ -356,6 +385,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="50dp">
+            <Space
+                android:layout_width="0dp"
+                android:layout_weight=".6"
+                android:layout_height="wrap_content"
+                tools:targetApi="ice_cream_sandwich" />
+            <TextView
+                android:layout_weight=".4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:id="@+id/ratingText4"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                />
         <!--    <Space
                 android:layout_width="0dp"
                 android:layout_weight=".6"
@@ -449,6 +491,19 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="50dp"
             android:id="@+id/finalrow">
+            <Space
+                android:layout_width="0dp"
+                android:layout_weight=".6"
+                android:layout_height="wrap_content"
+                tools:targetApi="ice_cream_sandwich" />
+            <TextView
+                android:layout_weight=".4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:id="@+id/ratingText5"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                />
         <!--    <Space
                 android:layout_width="0dp"
                 android:layout_weight=".6"
@@ -732,6 +787,15 @@
             android:layout_height="wrap_content"
             tools:targetApi="ice_cream_sandwich" />
     </TableRow>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:layout_below="@+id/hangRow"
+        android:id="@+id/saveButton2" />
 
 </RelativeLayout>
 </ScrollView>

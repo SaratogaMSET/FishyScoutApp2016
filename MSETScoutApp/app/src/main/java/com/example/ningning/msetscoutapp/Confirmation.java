@@ -25,8 +25,26 @@ public class Confirmation extends AppCompatActivity{
 
     //DataUpdate dataUpdate;
 
+    TextView sp1;
+    TextView sp2;
+    TextView sp3;
+    TextView sp4;
+    TextView sp5;
+    TextView r1;
+    TextView r2;
+    TextView r3;
+    TextView r4;
+    TextView r5;
 
+    TextView highGoalD2;
+    TextView lowGoalD2;
+    TextView defense;
+    TextView endGame;
 
+    TextView notes;
+    TextView breach;
+    TextView capture;
+    TextView result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +54,7 @@ public class Confirmation extends AppCompatActivity{
 
       //  RoboInfo test = new RoboInfo();
 
+        //Auto display
         matchD = (TextView) findViewById(R.id.matchDisplay);
         teamD = (TextView) findViewById(R.id.teamDisplay);
         scouterD = (TextView) findViewById(R.id.scouterDisplay);
@@ -45,6 +64,28 @@ public class Confirmation extends AppCompatActivity{
         highGoalD1 = (TextView) findViewById(R.id.highGoalDisplay);
         lowGoalD1 = (TextView) findViewById(R.id.lowGoalDisplay);
         ballD = (TextView) findViewById(R.id.ballDisplay);
+
+        //Tele display
+        sp1 = (TextView) findViewById(R.id.tspinnerDisplay1);
+        sp2 = (TextView) findViewById(R.id.tspinnerDisplay2);
+        sp3 = (TextView) findViewById(R.id.tspinnerDisplay3);
+        sp4 = (TextView) findViewById(R.id.tspinnerDisplay4);
+        sp5 = (TextView) findViewById(R.id.tspinnerDisplay5);
+        r1 = (TextView) findViewById(R.id.ratingDisplay1);
+        r2 = (TextView) findViewById(R.id.ratingDisplay2);
+        r3 = (TextView) findViewById(R.id.ratingDisplay3);
+        r4 = (TextView) findViewById(R.id.ratingDisplay4);
+        r5 = (TextView) findViewById(R.id.ratingDisplay5);
+        highGoalD2 = (TextView) findViewById(R.id.highGoalDisplay2);
+        lowGoalD2 = (TextView) findViewById(R.id.lowGoalDisplay2);
+        defense = (TextView) findViewById(R.id.defenseDisplay);
+        endGame = (TextView) findViewById(R.id.endGameDisplay);
+
+        //Post Match display
+        notes = (TextView) findViewById(R.id.notesDisplay);
+        breach = (TextView) findViewById(R.id.breachDisplay);
+        capture = (TextView) findViewById(R.id.captureDisplay);
+        result = (TextView) findViewById(R.id.resultDisplay);
 
       //  matchD.setText();
        // matchD.setText(test.getMatchText());
@@ -60,8 +101,39 @@ public class Confirmation extends AppCompatActivity{
             if (extras == null) {
                 Log.d("Con", "7");
             } else {
-                matchD.append(extras.getString("matchT"));
-                Log.d("Con", "8");
+
+                //from Autonomous
+                matchD.setText(extras.getString("matchT"));
+                teamD.setText(extras.getString("teamT"));
+                scouterD.setText(extras.getString("scoutT"));
+                spyD.setText(extras.getString("spyT"));
+                reachD.setText(extras.getString("reachT"));
+                highGoalD1.setText(extras.getString("highT"));
+                lowGoalD1.setText(extras.getString("lowT"));
+                ballD.setText(extras.getString("ballsT"));
+                crossD.setText(extras.getString("crossT"));
+
+                //from Teleop
+                sp1.setText(extras.getString("sp1T"));
+                sp2.setText(extras.getString("sp2T"));
+                sp3.setText(extras.getString("sp3T"));
+                sp4.setText(extras.getString("sp4T"));
+                sp5.setText(extras.getString("sp5T"));
+                r1.setText(extras.getString("r1T"));
+                r2.setText(extras.getString("r2T"));
+                r3.setText(extras.getString("r3T"));
+                r4.setText(extras.getString("r4T"));
+                r5.setText(extras.getString("r5T"));
+                highGoalD2.setText(extras.getString("high2T"));
+                lowGoalD2.setText(extras.getString("low2T"));
+                defense.setText(extras.getString("tdefenseT"));
+                endGame.setText(extras.getString("endgameT"));
+
+                //from PostMatch
+                notes.setText(extras.getString("notesT"));
+                breach.setText(extras.getString("breachT"));
+                capture.setText(extras.getString("captureT"));
+                result.setText(extras.getString("resultT"));
             }
         }
      /*   Log.d("con", "4");
