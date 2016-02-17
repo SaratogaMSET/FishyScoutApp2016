@@ -8,6 +8,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -45,11 +46,12 @@ public class Input extends FragmentActivity {
     public static String matchText;
 
     private static final int NUM_PAGES = 3;
+
     public ViewPager mPager;
-    public PagerAdapter mPagerAdapter;
+    public ScreenSlidePagerAdapter mPagerAdapter;
     public String tabTitles[] = new String[]{"Autonomous", "Teleop", "Post Match"};
 
-    public RoboInfo inputinfo;
+    RoboInfo inputinfo = new RoboInfo();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,18 +71,21 @@ public class Input extends FragmentActivity {
         tabsStrip.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-           /*     if (position == 1) {
-                    Autonomous auto = new Autonomous();
-                    inputinfo.setMatchText(autoInfo.getMatchText());
+                Log.d("input", "1");
+                DataUpdate dataUpdate = (DataUpdate) mPagerAdapter.getItem(position);
+                Log.d("input", "2");
+                dataUpdate.setData(inputinfo);
+                Log.d("input", "3");
 
 
-
-                }*/
             }
 
             @Override
             public void onPageSelected(int position) {
-
+                Log.d("input", "4");
+                DataUpdate dataUpdate = (DataUpdate) mPagerAdapter.getItem(position);
+                Log.d("input", "5");
+                inputinfo = dataUpdate.getData();
             }
 
             @Override
@@ -107,6 +112,7 @@ public class Input extends FragmentActivity {
      * sequence.
      */
     public class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
+        private Fragment[] tabList = new Fragment[NUM_PAGES];
         public ScreenSlidePagerAdapter(FragmentManager fm) {
             super(fm);
         }
@@ -116,21 +122,30 @@ public class Input extends FragmentActivity {
             return NUM_PAGES;
         }
 
+
         @Override
-         public Fragment getItem(int position) {
-
-            if (position == 0) {
-                Autonomous auto = new Autonomous();
-                return auto;
+        public Fragment getItem(int position) {
+            if(tabList[position] != null) {
+                return tabList[position];
             }
-
-            if (position == 1) {
-                return new Teleop();
-
-            } else {
-                return new PostMatch();
+            else {
+                Log.d("input", "6");
+                switch (position) {
+                    case 0: {
+                        Log.d("input", "7");
+                        tabList[0] = Autonomous.newInstance("a");
+                        Log.d("input", "8");
+                        return new Autonomous();
+                    }
+                    case 1: {
+                        return tabList[1];
+                    }
+                    case 2: {
+                        return tabList[2];
+                    }
+                }
             }
-
+            return null;
         }
 
         @Override
@@ -140,5 +155,13 @@ public class Input extends FragmentActivity {
 
 
     }
+//
+//    private static Fragment newInstance(int i) {
+//        Fragment f = new Fragment();
+//        Bundle args = new Bundle();
+//        args.putInt("index", i);
+//        f.setArguments(args);
+//        return f;
+//    }
 
 }

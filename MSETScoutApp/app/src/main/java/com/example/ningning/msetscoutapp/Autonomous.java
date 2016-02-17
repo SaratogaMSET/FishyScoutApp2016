@@ -29,7 +29,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 //part 1 of input activity
-public class Autonomous extends Fragment {
+public class Autonomous extends Fragment implements DataUpdate{
+    String matchT;
+
     ToggleButton zero;
     ToggleButton one;
     ToggleButton two;
@@ -46,21 +48,18 @@ public class Autonomous extends Fragment {
 
     Button submit;
 
-    EditText matchText;
+    public EditText matchText;
     EditText teamText;
     EditText scouterText;
     ToggleButton spyButton;
     ToggleButton reachButton;
     Spinner crossSpinner;
 
-    public static RoboInfo autoInfo;
-
-
-    public static final String ARG_OBJECT = "object";
+    private RoboInfo autoInfo = new RoboInfo();
 
     @TargetApi(Build.VERSION_CODES.GINGERBREAD)
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState) {
-        View in = inflater.inflate(R.layout.activity_autonomous, container,false); // adds Autonomous tab to input activity
+        View in = inflater.inflate(R.layout.activity_autonomous, container, false); // adds Autonomous tab to input activity
 
         //set up radiogroup-like behaviors for toggle buttons
         zero = (ToggleButton) in.findViewById(R.id.zeroBallsToggle);
@@ -120,11 +119,13 @@ public class Autonomous extends Fragment {
             }
         });
 
-      //  matchText = (EditText)in.findViewById(R.id.matchNumberEdit);
-   //     autoInfo.setMatchText(matchText.getText().toString());
 
-      /*  if (matchText.getText().toString() != null && !matchText.getText().toString().isEmpty()) {
-            String matchT = matchText.getText().toString();
+    /*      matchText = (EditText)in.findViewById(R.id.matchNumberEdit);
+             //autoInfo.setMatchText(matchText.getText().toString());
+            matchT = matchText.getText().toString();
+
+        if (matchText.getText().toString() != null && !matchText.getText().toString().isEmpty()) {
+            matchT = matchText.getText().toString();
         }*/
 
         lowDelete.setOnClickListener(new View.OnClickListener() {
@@ -150,6 +151,8 @@ public class Autonomous extends Fragment {
             }
         });*/
 
+
+
         return in;
     }
 
@@ -173,4 +176,35 @@ public class Autonomous extends Fragment {
         }
     };
 
+    @Override
+    public RoboInfo getData() {
+        Log.d("auto", "1");
+        this.autoInfo.matchT = this.matchT; // Assuming subcon has been updated.. else use txt1.getText();
+        Log.d("auto", "2");
+        return this.autoInfo;
+    }
+
+    @Override
+    public void setData(RoboInfo workData) {
+        Log.d("auto", "3");
+        this.autoInfo = workData;
+        // Update this page's views with the workData...
+        // This assumes the fragment has already been created and txt1 is set to a view
+        Log.d("auto", "4");
+        this.matchT = workData.matchT; // Actually could just use subCon in workData, but be aware that workData actually points to the Activity's copy (kinda makes getdata redundant.. but I like symmetry and couldn't be bothered making lots of copies of the object).
+    }
+
+    public static Autonomous newInstance(String a)
+    {
+        Autonomous fragment=new Autonomous();
+        Log.d("auto", "5");
+        Bundle bundle=new Bundle();
+        bundle.putString("a", "matchText");
+        Log.d("auto", "6");
+        fragment.setArguments(bundle);
+        Log.d("auto", "7");
+        return fragment;
+    }
 }
+
+

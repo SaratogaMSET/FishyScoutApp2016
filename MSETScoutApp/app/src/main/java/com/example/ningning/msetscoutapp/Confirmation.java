@@ -24,7 +24,7 @@ public class Confirmation extends AppCompatActivity{
     TextView ballD;
 
     //DataUpdate dataUpdate;
-    RoboInfo info;
+
 
 
 
@@ -33,6 +33,8 @@ public class Confirmation extends AppCompatActivity{
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirmation);
+
+      //  RoboInfo test = new RoboInfo();
 
         matchD = (TextView) findViewById(R.id.matchDisplay);
         teamD = (TextView) findViewById(R.id.teamDisplay);
@@ -43,6 +45,11 @@ public class Confirmation extends AppCompatActivity{
         highGoalD1 = (TextView) findViewById(R.id.highGoalDisplay);
         lowGoalD1 = (TextView) findViewById(R.id.lowGoalDisplay);
         ballD = (TextView) findViewById(R.id.ballDisplay);
+       // matchD.setText(test.getMatchText());
+
+        Bundle bundle = new Bundle();
+        final String name = bundle.getString("a");
+        matchD.setText(name);
 
       /*  Log.d("Con", "5");
         if (savedInstanceState == null) {
