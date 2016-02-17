@@ -14,5 +14,15 @@ public class RoboInfo {
        // matchT = getSupportFragmentManager().findFragmentById(R.id.autoFrag)
   //  }
 
-   String matchT;
+   public String matchText;
+
+   public void setMatch(String str) {
+      matchText = str;
+   }
+
+   public String getMatch() {
+      return matchText;
+   }
+
+
 }

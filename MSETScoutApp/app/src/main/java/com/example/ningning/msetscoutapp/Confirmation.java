@@ -45,23 +45,25 @@ public class Confirmation extends AppCompatActivity{
         highGoalD1 = (TextView) findViewById(R.id.highGoalDisplay);
         lowGoalD1 = (TextView) findViewById(R.id.lowGoalDisplay);
         ballD = (TextView) findViewById(R.id.ballDisplay);
+
+      //  matchD.setText();
        // matchD.setText(test.getMatchText());
 
-        Bundle bundle = new Bundle();
+      /*  Bundle bundle = new Bundle();
         final String name = bundle.getString("a");
         matchD.setText(name);
 
-      /*  Log.d("Con", "5");
+        Log.d("Con", "5");*/
         if (savedInstanceState == null) {
             Bundle extras = getIntent().getExtras();
             Log.d("Con", "6");
             if (extras == null) {
                 Log.d("Con", "7");
             } else {
-                matchD.setText(extras.getString("matchT"));
+                matchD.append(extras.getString("matchT"));
                 Log.d("Con", "8");
             }
-        }*/
+        }
      /*   Log.d("con", "4");
         Input in = new Input();
         Log.d("con", "5");

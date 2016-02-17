@@ -29,7 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 //part 1 of input activity
-public class Autonomous extends Fragment implements DataUpdate{
+public class Autonomous extends Fragment {
     String matchT;
 
     ToggleButton zero;
@@ -55,10 +55,13 @@ public class Autonomous extends Fragment implements DataUpdate{
     ToggleButton reachButton;
     Spinner crossSpinner;
 
+    Button save;
+    TextView matchD;
+
     private RoboInfo autoInfo = new RoboInfo();
 
     @TargetApi(Build.VERSION_CODES.GINGERBREAD)
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState) {
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState) {
         View in = inflater.inflate(R.layout.activity_autonomous, container, false); // adds Autonomous tab to input activity
 
         //set up radiogroup-like behaviors for toggle buttons
@@ -137,6 +140,19 @@ public class Autonomous extends Fragment implements DataUpdate{
             }
         });
 
+        save = (Button)in.findViewById(R.id.saveButton1);
+        matchText = (EditText)in.findViewById(R.id.matchNumberEdit);
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //((TextView)getActivity().findViewById(R.id.matchDisplay)).setText(matchText.getText().toString());
+             //   View con = inflater.inflate(R.layout.activity_confirmation, null);
+              //  TextView text = (TextView) con.findViewById(R.id.matchDisplay);
+               // text.append(matchText.getText().toString());
+                Input.myBundle.putString("match", matchText.getText().toString());
+            }
+        });
+
 
         /*View fromPost = inflater.inflate(R.layout.activity_post_match, null);
         submit = (Button) fromPost.findViewById(R.id.submitButton);
@@ -176,7 +192,7 @@ public class Autonomous extends Fragment implements DataUpdate{
         }
     };
 
-    @Override
+   /* @Override
     public RoboInfo getData() {
         Log.d("auto", "1");
         this.autoInfo.matchT = this.matchT; // Assuming subcon has been updated.. else use txt1.getText();
@@ -192,9 +208,9 @@ public class Autonomous extends Fragment implements DataUpdate{
         // This assumes the fragment has already been created and txt1 is set to a view
         Log.d("auto", "4");
         this.matchT = workData.matchT; // Actually could just use subCon in workData, but be aware that workData actually points to the Activity's copy (kinda makes getdata redundant.. but I like symmetry and couldn't be bothered making lots of copies of the object).
-    }
+    }*/
 
-    public static Autonomous newInstance(String a)
+  /*  public static Autonomous newInstance(String a)
     {
         Autonomous fragment=new Autonomous();
         Log.d("auto", "5");
@@ -204,7 +220,7 @@ public class Autonomous extends Fragment implements DataUpdate{
         fragment.setArguments(bundle);
         Log.d("auto", "7");
         return fragment;
-    }
+    }*/
 }
 
 

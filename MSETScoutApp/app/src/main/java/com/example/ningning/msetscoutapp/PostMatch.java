@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,11 +51,16 @@ public class PostMatch extends Fragment {
         TextView matchT = (TextView) fromAuto.findViewById(R.id.textView4);
         final String match = matchT.getText().toString();
         Log.d("post", "2");*/
+
+        View auto = inflater.inflate(R.layout.activity_autonomous, null);
+        final TextView matchT = (TextView) auto.findViewById(R.id.setMatchText);
         submit = (Button) in.findViewById(R.id.submitButton);
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent toConfirmation = new Intent(getActivity(), Confirmation.class);
+                String match = Input.myBundle.getString("match");
+                toConfirmation.putExtra("matchT", match);
                 startActivity(toConfirmation);
             }
         });

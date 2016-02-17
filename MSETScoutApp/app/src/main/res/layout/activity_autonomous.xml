@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -323,6 +324,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
+        android:id="@+id/ballLayout"
         android:layout_below="@+id/lowButtonTableRow">
 
         <TextView
@@ -382,6 +384,52 @@
             android:id="@+id/threeBallsToggle" />
     </TableRow>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:layout_below="@+id/ballLayout"
+        android:id="@+id/saveButton1" />
+
+    <LinearLayout
+        android:layout_width="200dip"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="-500dip"
+        android:orientation="vertical" >
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" "
+            android:id="@+id/setMatchText" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" "
+            android:id="@+id/textView21" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" "
+            android:id="@+id/textView22" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" "
+            android:id="@+id/textView23" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" "
+            android:id="@+id/textView20" />
+    </LinearLayout>
 
 </RelativeLayout>
 </ScrollView>

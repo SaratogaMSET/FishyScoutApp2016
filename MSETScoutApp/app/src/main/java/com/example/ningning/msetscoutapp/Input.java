@@ -52,6 +52,7 @@ public class Input extends FragmentActivity {
     public String tabTitles[] = new String[]{"Autonomous", "Teleop", "Post Match"};
 
     RoboInfo inputinfo = new RoboInfo();
+    public static Bundle myBundle = new Bundle();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,21 +72,21 @@ public class Input extends FragmentActivity {
         tabsStrip.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                Log.d("input", "1");
+                /*Log.d("input", "1");
                 DataUpdate dataUpdate = (DataUpdate) mPagerAdapter.getItem(position);
                 Log.d("input", "2");
                 dataUpdate.setData(inputinfo);
-                Log.d("input", "3");
+                Log.d("input", "3");*/
 
 
             }
 
             @Override
             public void onPageSelected(int position) {
-                Log.d("input", "4");
+              /*  Log.d("input", "4");
                 DataUpdate dataUpdate = (DataUpdate) mPagerAdapter.getItem(position);
                 Log.d("input", "5");
-                inputinfo = dataUpdate.getData();
+                inputinfo = dataUpdate.getData();*/
             }
 
             @Override
@@ -122,8 +123,21 @@ public class Input extends FragmentActivity {
             return NUM_PAGES;
         }
 
-
         @Override
+        public Fragment getItem(int position) {
+            if (position == 0) {
+                return new Autonomous();
+            }
+            if (position == 1) {
+                return new Teleop();
+            }
+            else {
+                return new PostMatch();
+            }
+        }
+
+
+     /*   @Override
         public Fragment getItem(int position) {
             if(tabList[position] != null) {
                 return tabList[position];
@@ -146,7 +160,7 @@ public class Input extends FragmentActivity {
                 }
             }
             return null;
-        }
+        }*/
 
         @Override
         public CharSequence getPageTitle(int position) {
