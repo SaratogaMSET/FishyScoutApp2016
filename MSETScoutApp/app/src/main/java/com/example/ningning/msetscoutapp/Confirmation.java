@@ -55,6 +55,7 @@ public class Confirmation extends AppCompatActivity{
     TextView breach;
     TextView capture;
     TextView result;
+    TextView points;
 
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     private static String[] PERMISSIONS_STORAGE = {
@@ -102,6 +103,7 @@ public class Confirmation extends AppCompatActivity{
         breach = (TextView) findViewById(R.id.breachDisplay);
         capture = (TextView) findViewById(R.id.captureDisplay);
         result = (TextView) findViewById(R.id.resultDisplay);
+        points = (TextView) findViewById(R.id.pointsDisplay);
 
       //  matchD.setText();
        // matchD.setText(test.getMatchText());
@@ -150,6 +152,8 @@ public class Confirmation extends AppCompatActivity{
                 breach.setText(extras.getString("breachT"));
                 capture.setText(extras.getString("captureT"));
                 result.setText(extras.getString("resultT"));
+                points.setText(extras.getString("pointsT"));
+
             }
         }
      /*   Log.d("con", "4");
@@ -230,6 +234,25 @@ public class Confirmation extends AppCompatActivity{
                 writer.append("Auto Crosses Defense, " + getAb(extras.getString("crossT")) + "\n ");
                 writer.append("Auto High Goal Shots, " + extras.getString("highT") + "\n ");
                 writer.append("Auto Low Goal Shots, " + extras.getString("lowT") + "\n ");
+                writer.append("Difficulty to Cross " + extras.getString("sp1T") + ", " + extras.getString("r1T") + "\n");
+                writer.append("Difficulty to Cross " + extras.getString("sp2T") + ", " + extras.getString("r2T") + "\n");
+                writer.append("Difficulty to Cross " + extras.getString("sp3T") + ", " + extras.getString("r3T") + "\n");
+                writer.append("Difficulty to Cross " + extras.getString("sp4T") + ", " + extras.getString("r4T") + "\n");
+                writer.append("Difficulty to Cross " + extras.getString("sp5T") + ", " + extras.getString("r5T") + "\n");
+                writer.append("Teleop High Goal Shots, " + extras.getString("high2T") + "\n");
+                writer.append("Teleop Low Goal Shots, " + extras.getString("low2T") + "\n");
+                writer.append("Total Points, " + extras.getString("pointsT") + "\n");
+                writer.append("Play Defense, " + extras.getString("tdefenseT") + "\n");
+                writer.append("End Game, " + extras.getString("endgameT"));
+                if (extras.getString("breachT").equals("True")) {
+                    writer.append(", Breach");
+                }
+                if (extras.getString("captureT").equals("True")) {
+                    writer.append(", Capture");
+                }
+                writer.append("\n");
+                writer.append("Result, " + extras.getString("resultT") + "\n");
+                writer.append("Notes, " + extras.getString("notesT") + "\n");
                 writer.flush();
                 writer.close();
                 Toast.makeText(getBaseContext(), "File created!", Toast.LENGTH_SHORT).show();

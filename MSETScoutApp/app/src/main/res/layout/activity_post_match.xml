@@ -163,7 +163,32 @@
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/toggleLayout">
+        android:layout_marginTop="50dp"
+        android:id="@+id/totalPointsLayout"
+        android:layout_below="@+id/toggleLayout">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight=".4"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Total Points"
+            android:id="@+id/textView21" />
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_weight=".6"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/pointsEdit" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/totalPointsLayout">
 
         <Space
             android:layout_width="0dp"
@@ -180,7 +205,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:padding="30dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="100dp" />
+            android:layout_marginTop="70dp" />
 
         <Space
             android:layout_width="0dp"

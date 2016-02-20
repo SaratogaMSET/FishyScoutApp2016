@@ -39,6 +39,8 @@ public class PostMatch extends Fragment {
     ToggleButton breach;
     ToggleButton capture;
 
+    EditText points;
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState) {
         View in = inflater.inflate(R.layout.activity_post_match, container, false); // adds PostMatch tab to input activity
 
@@ -59,6 +61,7 @@ public class PostMatch extends Fragment {
         notes = (EditText) in.findViewById(R.id.notesEdit);
         breach = (ToggleButton) in.findViewById(R.id.breachToggle);
         capture = (ToggleButton) in.findViewById(R.id.captureToggle);
+        points = (EditText) in.findViewById(R.id.pointsEdit);
 
         View auto = inflater.inflate(R.layout.activity_autonomous, null);
        // final TextView matchT = (TextView) auto.findViewById(R.id.setMatchText);
@@ -142,8 +145,9 @@ public class PostMatch extends Fragment {
                     toConfirmation.putExtra("resultT", "Tie");
                 }
                 else {
-                    toConfirmation.putExtra("resultT", "none");
+                    toConfirmation.putExtra("resultT", "None");
                 }
+                toConfirmation.putExtra("pointsT", points.getText().toString());
                 startActivity(toConfirmation);
             }
         });
