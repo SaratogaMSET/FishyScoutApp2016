@@ -92,7 +92,7 @@ public class Autonomous extends Fragment {
         highHit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                high += "1";
+                high += "1 ";
                 highView.setText(high);
 
             }
@@ -101,7 +101,7 @@ public class Autonomous extends Fragment {
         highMiss.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                high += "O";
+                high += "O ";
                 highView.setText(high);
 
             }
@@ -111,7 +111,7 @@ public class Autonomous extends Fragment {
             @Override
             public void onClick(View v) {
                 if (highView.getText().length() > 0) {
-                    high = high.substring(0, high.length() -1);
+                    high = high.substring(0, high.length() -2);
                     highView.setText(high);
 
                 }
@@ -121,7 +121,7 @@ public class Autonomous extends Fragment {
         lowHit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                low += "1";
+                low += "1 ";
                 lowView.setText(low);
             }
         });
@@ -129,7 +129,7 @@ public class Autonomous extends Fragment {
         lowMiss.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                low += "O";
+                low += "O ";
                 lowView.setText(low);
             }
         });
@@ -147,7 +147,7 @@ public class Autonomous extends Fragment {
             @Override
             public void onClick(View v) {
                 if (lowView.getText().length() > 0) {
-                    low = low.substring(0, low.length() -1);
+                    low = low.substring(0, low.length() -2);
                     lowView.setText(low);
                 }
             }
@@ -172,16 +172,16 @@ public class Autonomous extends Fragment {
                 Input.myBundle.putString("team", teamText.getText().toString());
                 Input.myBundle.putString("scout", scouterText.getText().toString());
                 if (spyButton.isChecked()) {
-                    Input.myBundle.putString("spy", "Yes");
+                    Input.myBundle.putString("spy", "True");
                 }
                 else {
-                    Input.myBundle.putString("spy", "No");
+                    Input.myBundle.putString("spy", "False");
                 }
                 if (reachButton.isChecked()) {
-                    Input.myBundle.putString("reach", "Yes");
+                    Input.myBundle.putString("reach", "True");
                 }
                 else {
-                    Input.myBundle.putString("reach", "No");
+                    Input.myBundle.putString("reach", "False");
                 }
                 Input.myBundle.putString("highV", high);
                 Input.myBundle.putString("lowV", low);

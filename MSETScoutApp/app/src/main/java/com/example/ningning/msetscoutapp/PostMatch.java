@@ -121,16 +121,16 @@ public class PostMatch extends Fragment {
                 //from PostMatch
                 toConfirmation.putExtra("notesT", notes.getText().toString());
                 if (breach.isChecked()) {
-                    toConfirmation.putExtra("breachT", "Yes");
+                    toConfirmation.putExtra("breachT", "True");
                 }
                 else {
-                    toConfirmation.putExtra("breachT", "No");
+                    toConfirmation.putExtra("breachT", "False");
                 }
                 if (capture.isChecked()) {
-                    toConfirmation.putExtra("captureT", "Yes");
+                    toConfirmation.putExtra("captureT", "True");
                 }
                 else {
-                    toConfirmation.putExtra("captureT", "No");
+                    toConfirmation.putExtra("captureT", "False");
                 }
                 if (win.isChecked()) {
                     toConfirmation.putExtra("resultT", "Win");

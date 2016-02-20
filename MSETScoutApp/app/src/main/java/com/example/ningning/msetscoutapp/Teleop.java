@@ -133,7 +133,7 @@ public class Teleop extends Fragment {
         spinnerEasy1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                r1 += "E";
+                r1 += "E ";
                 textView1.setText(r1);
             }
         });
@@ -141,7 +141,7 @@ public class Teleop extends Fragment {
         spinnerMed1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                r1 += "M";
+                r1 += "M ";
                 textView1.setText(r1);
             }
         });
@@ -149,7 +149,7 @@ public class Teleop extends Fragment {
         spinnerHard1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                r1 += "H";
+                r1 += "H ";
                 textView1.setText(r1);
             }
         });
@@ -158,7 +158,7 @@ public class Teleop extends Fragment {
             @Override
             public void onClick(View v) {
                 if (textView1.getText().length() > 0) {
-                    r1 = r1.substring(0, r1.length() -1);
+                    r1 = r1.substring(0, r1.length() -2);
                     textView1.setText(r1);                }
             }
         });
@@ -166,7 +166,7 @@ public class Teleop extends Fragment {
         spinnerEasy2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                r2 += "E";
+                r2 += "E ";
                 textView2.setText(r2);
             }
         });
@@ -174,7 +174,7 @@ public class Teleop extends Fragment {
         spinnerMed2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                r2 += "M";
+                r2 += "M ";
                 textView2.setText(r2);
             }
         });
@@ -182,7 +182,7 @@ public class Teleop extends Fragment {
         spinnerHard2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                r2 += "H";
+                r2 += "H ";
                 textView2.setText(r2);
             }
         });
@@ -191,7 +191,7 @@ public class Teleop extends Fragment {
             @Override
             public void onClick(View v) {
                 if (textView2.getText().length() > 0) {
-                    r2 = r2.substring(0, r2.length() -1);
+                    r2 = r2.substring(0, r2.length() -2);
                     textView2.setText(r2);                  }
             }
         });
@@ -199,7 +199,7 @@ public class Teleop extends Fragment {
         spinnerEasy3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                r3 += "E";
+                r3 += "E ";
                 textView3.setText(r3);
             }
         });
@@ -207,7 +207,7 @@ public class Teleop extends Fragment {
         spinnerMed3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                r3 += "M";
+                r3 += "M ";
                 textView3.setText(r3);
             }
         });
@@ -215,7 +215,7 @@ public class Teleop extends Fragment {
         spinnerHard3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                r3 += "H";
+                r3 += "H ";
                 textView3.setText(r3);
             }
         });
@@ -224,7 +224,7 @@ public class Teleop extends Fragment {
             @Override
             public void onClick(View v) {
                 if (textView3.getText().length() > 0) {
-                    r3 = r3.substring(0, r3.length() -1);
+                    r3 = r3.substring(0, r3.length() -2);
                     textView3.setText(r3);                  }
             }
         });
@@ -232,7 +232,7 @@ public class Teleop extends Fragment {
         spinnerEasy4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                r4 += "E";
+                r4 += "E ";
                 textView4.setText(r4);
             }
         });
@@ -240,7 +240,7 @@ public class Teleop extends Fragment {
         spinnerMed4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                r4 += "M";
+                r4 += "M ";
                 textView4.setText(r4);
             }
         });
@@ -248,7 +248,7 @@ public class Teleop extends Fragment {
         spinnerHard4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                r4 += "H";
+                r4 += "H ";
                 textView4.setText(r4);
             }
         });
@@ -257,7 +257,7 @@ public class Teleop extends Fragment {
             @Override
             public void onClick(View v) {
                 if (textView4.getText().length() > 0) {
-                    r4 = r4.substring(0, r4.length() -1);
+                    r4 = r4.substring(0, r4.length() -2);
                     textView4.setText(r4);                  }
             }
         });
@@ -265,7 +265,7 @@ public class Teleop extends Fragment {
         spinnerEasy5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                r5 += "E";
+                r5 += "E ";
                 textView5.setText(r5);
             }
         });
@@ -273,14 +273,14 @@ public class Teleop extends Fragment {
         spinnerMed5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                r5 += "M";
+                r5 += "M ";
                 textView5.setText(r5);            }
         });
 
         spinnerHard5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                r5 += "H";
+                r5 += "H ";
                 textView5.setText(r5);            }
         });
 
@@ -288,7 +288,7 @@ public class Teleop extends Fragment {
             @Override
             public void onClick(View v) {
                 if (textView5.getText().length() > 0) {
-                    r5 = r5.substring(0, r5.length() -1);
+                    r5 = r5.substring(0, r5.length() -2);
                     textView5.setText(r5);                  }
             }
         });
@@ -306,7 +306,7 @@ public class Teleop extends Fragment {
         highHit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                high += "1";
+                high += "1 ";
                 highView.setText(high);
 
             }
@@ -315,17 +315,18 @@ public class Teleop extends Fragment {
         highMiss.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                high += "O";
+                high += "O ";
                 highView.setText(high);
 
             }
         });
 
+        //doesn't work
         highDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (highView.getText().length() > 0) {
-                    high = high.substring(0, high.length() -1);
+                    high = high.substring(0, high.length() - 2);
                     highView.setText(high);
 
                 }
@@ -335,7 +336,7 @@ public class Teleop extends Fragment {
         lowHit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                low += "1";
+                low += "1 ";
                 lowView.setText(low);
             }
         });
@@ -343,7 +344,7 @@ public class Teleop extends Fragment {
         lowMiss.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                low += "O";
+                low += "O ";
                 lowView.setText(low);
             }
         });
@@ -353,7 +354,7 @@ public class Teleop extends Fragment {
             @Override
             public void onClick(View v) {
                 if (lowView.getText().length() > 0) {
-                    low = low.substring(0, low.length() -1);
+                    low = low.substring(0, low.length() -2);
                     lowView.setText(low);
                 }
             }
@@ -383,10 +384,10 @@ public class Teleop extends Fragment {
                 Input.myBundle.putString("high2", high);
                 Input.myBundle.putString("low2", low);
                 if (defense.isChecked()) {
-                    Input.myBundle.putString("tdefense", "Yes");
+                    Input.myBundle.putString("tdefense", "True");
                 }
                 else {
-                    Input.myBundle.putString("tdefense", "No");
+                    Input.myBundle.putString("tdefense", "False");
                 }
                 if (hang.isChecked()) {
                     Input.myBundle.putString("endgame", "hang");
