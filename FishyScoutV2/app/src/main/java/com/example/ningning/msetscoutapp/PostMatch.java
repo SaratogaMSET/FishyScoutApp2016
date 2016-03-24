@@ -88,6 +88,9 @@ public class PostMatch extends Fragment {
                 else if ( Autonomous.scouterText.getText().toString().length() == 0) {
                     Toast.makeText(getActivity(), "Add Scouter Name!", Toast.LENGTH_SHORT).show();
                 }
+                else if (PostMatch.totalPoints.getText().toString().length() == 0) {
+                    Toast.makeText(getActivity(), "Add Total Points!", Toast.LENGTH_SHORT).show();
+                }
                 else {
                     Intent toConfirmation = new Intent(getActivity(), Confirmation.class);
                     startActivity(toConfirmation);
@@ -143,27 +146,4 @@ public class PostMatch extends Fragment {
         }
     };
 
-
- /*   @Override
-    public RoboInfo getData() {
-        this.postInfo.matchT = this.matchT; // Assuming subcon has been updated.. else use txt1.getText();
-        return this.postInfo;
-    }
-
-    @Override
-    public void setData(RoboInfo workData) {
-        this.postInfo = workData;
-        // Update this page's views with the workData...
-        // This assumes the fragment has already been created and txt1 is set to a view
-        this.matchT = workData.matchT; // Actually could just use subCon in workData, but be aware that workData actually points to the Activity's copy (kinda makes getdata redundant.. but I like symmetry and couldn't be bothered making lots of copies of the object).
-    }
-
-    public static PostMatch newInstance(String a)
-    {
-        PostMatch fragment=new PostMatch();
-        Bundle bundle=new Bundle();
-        bundle.putString("a", "matchText");
-        fragment.setArguments(bundle);
-        return fragment;
-    }*/
 }
