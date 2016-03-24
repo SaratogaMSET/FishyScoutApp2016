@@ -29,10 +29,10 @@
         android:layout_height="wrap_content"
         android:id="@+id/notesEdit"
         android:scrollHorizontally="true"
-        android:inputType="textMultiLine"
         android:hint="Enter notes here"
         android:layout_below="@id/textNotes"
         android:layout_marginTop="10dp"
+        android:singleLine = "true"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:scrollbars="none"/>
 
