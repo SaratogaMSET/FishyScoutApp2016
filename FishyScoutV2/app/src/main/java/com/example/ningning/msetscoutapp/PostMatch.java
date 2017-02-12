@@ -4,6 +4,10 @@ package com.example.ningning.msetscoutapp;
  * Results
  */
 
+/**
+ * Results
+ */
+
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -50,18 +54,18 @@ public class PostMatch extends Fragment {
 
 
     static EditText notesText;
-    static ToggleButton breach;
+    static ToggleButton reach;
     static ToggleButton capture;
-    static ToggleButton result;
+    static ToggleButton takeoff;
     static EditText totalPoints;
 
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState) {
-        View in = inflater.inflate(R.layout.activity_post_match, container, false); // adds PostMatch tab to input activity
+        View in = inflater.inflate(R.layout.activity_postmatch, container, false); // adds PostMatch tab to input activity
 
         notesText = (EditText) in.findViewById(R.id.notesEdit);
-        breach = (ToggleButton) in.findViewById(R.id.breachToggle);
-        capture = (ToggleButton) in.findViewById(R.id.captureToggle);
+        reach = (ToggleButton) in.findViewById(R.id.reachToggle);
+        takeoff = (ToggleButton) in.findViewById(R.id.takeoffToggle);
         //result = (ToggleButton) in.findViewById(R.id.tieToggle);
         totalPoints = (EditText) in.findViewById(R.id.totalPointsEdit);
 
@@ -75,7 +79,7 @@ public class PostMatch extends Fragment {
 
 
 
-       submit = (Button) in.findViewById(R.id.submitButton);
+        submit = (Button) in.findViewById(R.id.submitButton);
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

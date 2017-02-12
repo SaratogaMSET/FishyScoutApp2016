@@ -12,7 +12,6 @@ public class RoboInfo {
    String teamT;
    String scouterT;
    String notesT;
-   String balls = "0";
    String endGameT = "N";
    String result = "Lose";
 
@@ -57,8 +56,8 @@ public class RoboInfo {
       return notesT;
    }
 
-   public void setBalls(String str) {balls = str; }
-   public String getBalls() { return balls; }
+  // public void setBalls(String str) {balls = str; }
+   //public String getBalls() { return balls; }
 
    public void setEndGameT(String str) {endGameT = str; }
    public String getEndGameT() {return endGameT; }

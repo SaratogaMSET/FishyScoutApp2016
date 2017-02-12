@@ -21,6 +21,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.View.OnClickListener;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.inputmethod.EditorInfo;
@@ -39,41 +40,45 @@ import java.util.List;
 //part 1 of input activity
 public class Autonomous extends Fragment  {
 
-    // 2/17 revisions
     RoboInfo myRobo = RoboInfo.getInstance();
-    String matchT;
-    String teamT;
+    // String matchT;
+    // String teamT;
 
-    ToggleButton zero;
-    ToggleButton one;
-    ToggleButton two;
-    ToggleButton three;
 
-    Button highHit;
-    Button highMiss;
-    Button highDelete;
+    Button gearHit;
+    Button gearMiss;
+    Button gearDelete;
 
-    Button lowHit;
-    Button lowMiss;
-    Button lowDelete;
+    Button addFive1;
+    Button addTen1;
+    Button addTwenty1;
 
-    TextView highView;
-    TextView lowView;
+    Button addFive2;
+    Button addTen2;
+    Button addTwenty2;
+
+    int i;
+    int j;
+
+
+    static TextView gearsView;
+
+    TextView gearTextView;
+    static TextView highGoalView;
+    static TextView lowGoalView;
 
     Button submit;
 
     static EditText matchText;
     static EditText teamText;
     static EditText scouterText;
-    static ToggleButton spyButton;
-    static ToggleButton reachButton;
-    static Spinner crossSpinner;
-    static TextView highGoal;
-    static TextView lowGoal;
+    static ToggleButton baseLineButton;
+    TextView highGoal;
+    TextView lowGoal;
+    static TextView baselineText;
 
-    static Spinner a;
+
     static Spinner b;
-    static Spinner c;
     static Spinner d;
 
     private RoboInfo autoInfo = new RoboInfo();
@@ -82,137 +87,131 @@ public class Autonomous extends Fragment  {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState) {
         View in = inflater.inflate(R.layout.activity_autonomous, container, false); // adds Autonomous tab to input activity
 
-        // 2/17 Heher revisions
+
+
         matchText = (EditText)in.findViewById(R.id.matchNumberEdit);
         teamText = (EditText)in.findViewById(R.id.teamNumberEdit);
         scouterText = (EditText)in.findViewById(R.id.scouterNameEdit);
-        spyButton = (ToggleButton) in.findViewById(R.id.spyToggleButton);
-        reachButton = (ToggleButton) in.findViewById(R.id.reachDefenseToggleButton);
-        crossSpinner = (Spinner) in.findViewById(R.id.crossDefenseSpinner);
-        highGoal = (TextView) in.findViewById(R.id.highGoalView1);
-        lowGoal = (TextView) in.findViewById(R.id.lowGoalView1);
+        baseLineButton = (ToggleButton) in.findViewById(R.id.baselineToggleButton);
+        highGoal = (TextView) in.findViewById(R.id.highGoalTextView);
+        lowGoal = (TextView) in.findViewById(R.id.lowGoalTextView);
+        gearsView = (TextView) in.findViewById(R.id.gearTextView);
+        baselineText = (TextView) in.findViewById(R.id.baselineTextView);
+        gearTextView = (TextView) in.findViewById(R.id.gearTextView);
+        highGoalView = (TextView) in.findViewById (R.id.highGoalView);
+        lowGoalView = (TextView) in.findViewById (R.id.lowGoalView);
+
+        i = 0;
+        j = 0;
+
+
+
+
 
         //set up radiogroup-like behaviors for toggle buttons
-        zero = (ToggleButton) in.findViewById(R.id.zeroBallsToggle);
-        one = (ToggleButton) in.findViewById(R.id.oneBallsToggle);
-        two = (ToggleButton) in.findViewById(R.id.twoBallsToggle);
-        three = (ToggleButton) in.findViewById(R.id.threeBallsToggle);
 
-        zero.setOnCheckedChangeListener(changeChecker);
-        one.setOnCheckedChangeListener(changeChecker);
-        two.setOnCheckedChangeListener(changeChecker);
-        three.setOnCheckedChangeListener(changeChecker);
+        gearHit = (Button) in.findViewById(R.id.gearHitButton);
+        gearMiss = (Button) in.findViewById(R.id.gearMissButton);
+        gearDelete = (Button) in.findViewById(R.id.gearDeleteButton);
 
-        highHit = (Button) in.findViewById(R.id.highGoalHitButton1);
-        highMiss = (Button) in.findViewById(R.id.highGoalMissButton1);
-        highDelete = (Button) in.findViewById(R.id.highGoalDeleteButton1);
-        lowHit = (Button) in.findViewById(R.id.lowGoalHitButton1);
-        lowMiss = (Button) in.findViewById(R.id.lowGoalMissButton1);
-        lowDelete = (Button) in.findViewById(R.id.lowGoalDeleteButton1);
+        addFive1 = (Button) in.findViewById(R.id.highGoalAddFive);
+        addTen1 = (Button) in.findViewById(R.id.highGoalAddTen);
+        addTwenty1 = (Button) in.findViewById(R.id.highGoalAddTwenty);
 
-        a = (Spinner) in.findViewById(R.id.spinnerA);
+        addFive2 = (Button) in.findViewById(R.id.lowGoalAddFive);
+        addTen2 = (Button) in.findViewById(R.id.lowGoalAddTen);
+        addTwenty2 = (Button) in.findViewById(R.id.lowGoalAddTwenty);
+
         b = (Spinner) in.findViewById(R.id.spinnerB);
-        c = (Spinner) in.findViewById(R.id.spinnerC);
         d = (Spinner) in.findViewById(R.id.spinnerD);
+        addItemsOnSpinnerB();
+        addItemsOnSpinnerD();
 
-        a.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                Teleop.spinner2.setText(Autonomous.a.getSelectedItem().toString());
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parentView) {
-                Teleop.spinner2.setText(Autonomous.a.getSelectedItem().toString());
-            }
-
-        });
-        b.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                Teleop.spinner3.setText(Autonomous.b.getSelectedItem().toString());
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parentView) {
-                Teleop.spinner3.setText(Autonomous.b.getSelectedItem().toString());
-            }
-
-        });
-        c.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                Teleop.spinner4.setText(Autonomous.c.getSelectedItem().toString());
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parentView) {
-                Teleop.spinner4.setText(Autonomous.c.getSelectedItem().toString());
-            }
-
-        });
-        d.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                Teleop.spinner5.setText(Autonomous.d.getSelectedItem().toString());
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parentView) {
-                Teleop.spinner5.setText(Autonomous.d.getSelectedItem().toString());
-            }
-
-        });
-        highView = (TextView) in.findViewById(R.id.highGoalView1);
-        lowView = (TextView) in.findViewById(R.id.lowGoalView1);
-
-        highHit.setOnClickListener(new View.OnClickListener() {
+        gearHit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                highView.append("1 ");
+                gearTextView.append("1 ");
             }
         });
 
-        highMiss.setOnClickListener(new View.OnClickListener() {
+        gearMiss.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                highView.append("0 ");
+                gearTextView.append("0 ");
             }
         });
 
-        highDelete.setOnClickListener(new View.OnClickListener() {
+        gearDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (highView.getText().length() > 0) {
-                    highView.setText(highView.getText().subSequence(0, highView.getText().length() - 2));
+                if (gearTextView.getText().length() > 0) {
+                    gearTextView.setText(gearTextView.getText().subSequence(0, gearTextView.getText().length() - 2));
                 }
             }
         });
 
-        lowHit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                lowView.append("1 ");
+
+
+
+
+
+        addFive1.setOnClickListener(new View.OnClickListener() {
+            public void onClick (View v){
+                i +=5;
+                highGoalView.setText(String.valueOf(i));
             }
+
+        });
+        addTen1.setOnClickListener(new View.OnClickListener() {
+            public void onClick (View v){
+                i +=10;
+                highGoalView.setText(String.valueOf(i));
+            }
+
+        });
+        addTwenty1.setOnClickListener(new View.OnClickListener() {
+            public void onClick (View v){
+                i +=20;
+                highGoalView.setText(String.valueOf(i));
+            }
+
         });
 
-        lowMiss.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                lowView.append("0 ");
+
+
+        addFive2.setOnClickListener(new View.OnClickListener() {
+            public void onClick (View v){
+                j +=5;
+
+                highGoalView.setText(String.valueOf(j));
             }
+
+        });
+        addTen2.setOnClickListener(new View.OnClickListener() {
+            public void onClick (View v){
+                j+=10;
+                highGoalView.setText(String.valueOf(j));
+            }
+
+        });
+        addTwenty2.setOnClickListener(new View.OnClickListener() {
+            public void onClick (View v){
+                j+=20;
+                highGoalView.setText(String.valueOf(j));
+            }
+
         });
 
-        lowDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (lowView.getText().length() > 0) {
-                    lowView.setText(lowView.getText().subSequence(0, lowView.getText().length() - 2));
-                }
-            }
-        });
 
-        // 2/17 revision
+
+
+
+
+
+
+
+
+
         matchText.addTextChangedListener(new TextWatcher() {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {}
@@ -252,64 +251,68 @@ public class Autonomous extends Fragment  {
         return in;
     }
 
-    CompoundButton.OnCheckedChangeListener changeChecker = new CompoundButton.OnCheckedChangeListener() {
 
-        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-            if (isChecked) {
-                if (buttonView != zero) {
-                    zero.setChecked(false);
-                }
-                if (buttonView != one) {
-                    one.setChecked(false);
-                }
-                if (buttonView != two) {
-                    two.setChecked(false);
-                }
-                if (buttonView != three) {
-                    three.setChecked(false);
-                }
-                if (buttonView == zero) {
-                    String str = zero.getText().toString();
-                    myRobo.setBalls(str);
-                }
-                else if (buttonView == one) {
-                    String str = one.getText().toString();
-                    myRobo.setBalls(str);
-                }
-                else if (buttonView == two) {
-                    String str = two.getText().toString();
-                    myRobo.setBalls(str);
-                }
-                else if (buttonView == three) {
-                    String str = three.getText().toString();
-                    myRobo.setBalls(str);
-                }
-            }
+    /*
+        @Override
+        public RoboInfo getData() {
+            this.autoInfo.matchT = this.matchT; // Assuming subcon has been updated.. else use txt1.getText();
+            return this.autoInfo;
         }
-    };
 
-  /*  @Override
-    public RoboInfo getData() {
-        this.autoInfo.matchT = this.matchT; // Assuming subcon has been updated.. else use txt1.getText();
-        return this.autoInfo;
+        @Override
+        public void setData(RoboInfo workData) {
+            this.autoInfo = workData;
+            // Update this page's views with the workData...
+            // This assumes the fragment has already been created and txt1 is set to a view
+            this.matchT = workData.matchT; // Actually could just use subCon in workData, but be aware that workData actually points to the Activity's copy (kinda makes getdata redundant.. but I like symmetry and couldn't be bothered making lots of copies of the object).
+        }
+
+        public static Autonomous newInstance(String a)
+        {
+            Autonomous fragment=new Autonomous();
+            Bundle bundle=new Bundle();
+            bundle.putString("a", "matchText");
+            fragment.setArguments(bundle);
+            return fragment;
+        }
+    */
+    public void addItemsOnSpinnerB() {
+        // Spinner Drop down elements
+        List<String> categories = new ArrayList<String>();
+        categories.add("None");
+        categories.add("Very Little");
+        categories.add("Some");
+        categories.add("Most");
+        categories.add("All");
+
+        // Creating adapter for spinner
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
+
+        // Drop down layout style - list view with radio button
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // attaching data adapter to spinner
+        b.setAdapter(dataAdapter);
     }
 
-    @Override
-    public void setData(RoboInfo workData) {
-        this.autoInfo = workData;
-        // Update this page's views with the workData...
-        // This assumes the fragment has already been created and txt1 is set to a view
-        this.matchT = workData.matchT; // Actually could just use subCon in workData, but be aware that workData actually points to the Activity's copy (kinda makes getdata redundant.. but I like symmetry and couldn't be bothered making lots of copies of the object).
+    public void addItemsOnSpinnerD() {
+        // Spinner Drop down elements
+        List<String> categories = new ArrayList<String>();
+        categories.add("None");
+        categories.add("Very Little");
+        categories.add("Some");
+        categories.add("Most");
+        categories.add("All");
+
+        // Creating adapter for spinner
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String> (this, android.R.layout.simple_spinner_item, categories);
+
+        // Drop down layout style - list view with radio button
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // attaching data adapter to spinner
+        d.setAdapter(dataAdapter);
     }
 
-    public static Autonomous newInstance(String a)
-    {
-        Autonomous fragment=new Autonomous();
-        Bundle bundle=new Bundle();
-        bundle.putString("a", "matchText");
-        fragment.setArguments(bundle);
-        return fragment;
-    }*/
+
 }
-
-

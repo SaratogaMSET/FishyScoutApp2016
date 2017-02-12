@@ -127,6 +127,22 @@ public class Input extends FragmentActivity {
             }
         }
 
+        mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageSelected(int position) {
+                final InputMethodManager imm = (InputMethodManager)getSystemService(
+                        Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(mView.getWindowToken(), 0);
+            }
+
+            @Override
+            public void onPageScrolled(int position, float offset, int offsetPixels) {
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+            }
+        });
         //@Override
         public CharSequence getPageTitle(int position) {
             return tabTitles[position];

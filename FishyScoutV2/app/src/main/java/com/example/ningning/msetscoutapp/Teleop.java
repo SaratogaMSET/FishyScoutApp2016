@@ -4,468 +4,232 @@ package com.example.ningning.msetscoutapp;
  * Low Bar text change size
  * End Game
  */
-
+import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.inputmethod.EditorInfo;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.ToggleButton;
+import android.widget.Toast;
+
 
 import java.util.ArrayList;
+import java.util.List;
 
-//teleop is part 2 of input activity
-public class Teleop extends Fragment {
-
+/**
+ * Created by TrishlaPokharna on 1/14/17.
+ */
+public class Teleop {
     RoboInfo myRobo = RoboInfo.getInstance();
-    ToggleButton hang;
-    ToggleButton challenge;
-    ToggleButton none;
 
-    Button spinnerEasy1;
-    Button spinnerMed1;
-    Button spinnerHard1;
-    Button spinnerFail1;
-    Button spinnerDelete1;
+    TextView offense;
+    static ToggleButton offenseOrDefense;
 
-    Button spinnerEasy2;
-    Button spinnerMed2;
-    Button spinnerHard2;
-    Button spinnerFail2;
-    Button spinnerDelete2;
+    TextView gears;
+    static TextView gearsView;
 
-    Button spinnerEasy3;
-    Button spinnerMed3;
-    Button spinnerHard3;
-    Button spinnerFail3;
-    Button spinnerDelete3;
+    Button one;
+    Button zero;
+    Button back;
 
-    Button spinnerEasy4;
-    Button spinnerMed4;
-    Button spinnerHard4;
-    Button spinnerFail4;
-    Button spinnerDelete4;
+    TextView cycleTime;
+    static ToggleButton fastOrSlow;
 
-    Button spinnerEasy5;
-    Button spinnerMed5;
-    Button spinnerHard5;
-    Button spinnerFail5;
-    Button spinnerDelete5;
+    TextView highGoals;
+    static TextView highGoalsView;
+    Button five1;
+    Button ten1;
+    Button twenty1;
+    int i;
 
-    TextView textView1;
-    TextView textView2;
-    TextView textView3;
-    TextView textView4;
-    TextView textView5;
+    TextView consistency1;
+    static Spinner a;
 
+    TextView lowGoals;
+    static TextView lowGoalView;
+    Button five2;
+    Button ten2;
+    Button twenty2;
+    int j;
 
-    //high and low stuff
-    Button highHit;
-    Button highMiss;
-    Button highDelete;
-    Button lowHit;
-    Button lowMiss;
-    Button lowDelete;
+    TextView consistency2;
+    static Spinner b;
 
-    TextView highView;
-    TextView lowView;
+    ToggleButton climbOrNone;
 
-    static TextView spinner1;
-    static TextView spinnerD1;
-    static TextView spinner2;
-    static TextView spinnerD2;
-    static TextView spinner3;
-    static TextView spinnerD3;
-    static TextView spinner4;
-    static TextView spinnerD4;
-    static TextView spinner5;
-    static TextView spinnerD5;
-    static TextView highGoalD2;
-    static TextView lowGoalD2;
-    static ToggleButton defense;
-//  static ToggleButton hang;
-
-    private RoboInfo teleInfo = new RoboInfo();
-    String matchT;
-
+    @TargetApi(Build.VERSION_CODES.GINGERBREAD)
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState) {
-        View in = inflater.inflate(R.layout.activity_teleop, container,false); // adds Teleop tab to input activity
 
-        textView1 = (TextView) in.findViewById(R.id.ratingText1);
-        textView2 = (TextView) in.findViewById(R.id.ratingText2);
-        textView3 = (TextView) in.findViewById(R.id.ratingText3);
-        textView4 = (TextView) in.findViewById(R.id.ratingText4);
-        textView5 = (TextView) in.findViewById(R.id.ratingText5);
+        View in = inflater.inflate(R.layout.activity_teleop, container, false); // FIX THIS -- adds Autonomous tab to input activity
+        offense = (TextView) in.findViewById(R.id.offenseTextView);
+        offenseOrDefense = (ToggleButton) in.findViewById(R.id.offenseToggleButton);
 
-        hang = (ToggleButton) in.findViewById(R.id.hangToggle);
-        challenge = (ToggleButton) in.findViewById(R.id.challengeToggle);
-        none = (ToggleButton) in.findViewById(R.id.noneToggle);
-        defense = (ToggleButton) in.findViewById(R.id.defenseToggle);
+        gears = (TextView) in.findViewById(R.id.gearTextView1);
+        gearsView = (TextView) in.findViewById(R.id.gearView1);
 
-        hang.setOnCheckedChangeListener(changeChecker);
-        challenge.setOnCheckedChangeListener(changeChecker);
-        none.setOnCheckedChangeListener(changeChecker);
-        defense.setOnCheckedChangeListener(changeChecker);
+        one = (Button) in.findViewById(R.id.gearHitButton);
+        zero = (Button) in.findViewById(R.id.gearMissButton);
+        back = (Button) in.findViewById(R.id.gearDeleteButton);
 
-        spinnerEasy1 = (Button) in.findViewById(R.id.eBut1);
-        spinnerMed1 = (Button) in.findViewById(R.id.mBut1);
-        spinnerHard1 = (Button) in.findViewById(R.id.hBut1);
-        spinnerFail1 = (Button) in.findViewById(R.id.xFail1);
-        spinnerDelete1 = (Button) in.findViewById(R.id.xBut1);
+        cycleTime = (TextView) in.findViewById(R.id.cycleTimeTextView);
+        fastOrSlow = (ToggleButton) in.findViewById(R.id.cycleTimeToggleButton);
 
-        spinnerEasy2 = (Button) in.findViewById(R.id.eBut2);
-        spinnerMed2 = (Button) in.findViewById(R.id.mBut2);
-        spinnerHard2 = (Button) in.findViewById(R.id.hBut2);
-        spinnerFail2 = (Button) in.findViewById(R.id.xFail2);
-        spinnerDelete2 = (Button) in.findViewById(R.id.xBut2);
+        highGoals = (TextView) in.findViewById(R.id.highGoalTextView1);
+        highGoalsView = (TextView) in.findViewById(R.id.highGoalView);
+        five1 = (Button) in.findViewById(R.id.highGoalAddFive);
+        ten1 = (Button) in.findViewById(R.id.highGoalAddTen);
+        twenty1 = (Button) in.findViewById(R.id.highGoalAddTwenty);
+        i = 0;
 
-        spinnerEasy3 = (Button) in.findViewById(R.id.eBut3);
-        spinnerMed3 = (Button) in.findViewById(R.id.mBut3);
-        spinnerHard3 = (Button) in.findViewById(R.id.hBut3);
-        spinnerFail3 = (Button) in.findViewById(R.id.xFail3);
-        spinnerDelete3 = (Button) in.findViewById(R.id.xBut3);
+        consistency1 = (TextView) in.findViewById(R.id.textView13);
+        a = (Spinner) in.findViewById(R.id.spinnerD);
+        addItemsOnSpinner1();
 
-        spinnerEasy4 = (Button) in.findViewById(R.id.eBut4);
-        spinnerMed4 = (Button) in.findViewById(R.id.mBut4);
-        spinnerHard4 = (Button) in.findViewById(R.id.hBut4);
-        spinnerFail4 = (Button) in.findViewById(R.id.xFail4);
-        spinnerDelete4 = (Button) in.findViewById(R.id.xBut4);
+        lowGoals = (TextView) in.findViewById(R.id.lowGoalTextView);
+        lowGoalView = (TextView) in.findViewById(R.id.lowGoalView2);
+        five2 = (Button) in.findViewById(R.id.lowGoalAddFive);
+        ten2 = (Button) in.findViewById(R.id.lowGoalAddTenButton);
+        twenty2 = (Button) in.findViewById(R.id.lowGoalAddTwentyButton);
+        j = 0;
 
-        spinnerEasy5 = (Button) in.findViewById(R.id.eBut5);
-        spinnerMed5 = (Button) in.findViewById(R.id.mBut5);
-        spinnerHard5 = (Button) in.findViewById(R.id.hBut5);
-        spinnerFail5 = (Button) in.findViewById(R.id.xFail5);
-        spinnerDelete5 = (Button) in.findViewById(R.id.xBut5);
+        consistency2 = (TextView) in.findViewById(R.id.textView11);
+        b = (Spinner) in.findViewById(R.id.spinnerB);
+        addItemsOnSpinner2();
+        climbOrNone = (ToggleButton) in.findViewById(R.id.takeOffToggleButton);
 
 
-        //high and low stuff
-        highHit = (Button) in.findViewById(R.id.highGoalHitButton);
-        highMiss = (Button) in.findViewById(R.id.highGoalMissButton);
-        highDelete = (Button) in.findViewById(R.id.highGoalDeleteButton);
-        lowHit = (Button) in.findViewById(R.id.lowGoalHitButton);
-        lowMiss = (Button) in.findViewById(R.id.lowGoalMissButton);
-        lowDelete = (Button) in.findViewById(R.id.lowGoalDeleteButton);
-
-        highView = (TextView) in.findViewById(R.id.highGoalView2);
-        lowView = (TextView) in.findViewById(R.id.lowGoalView2);
-
-        spinnerEasy1.setOnClickListener(new View.OnClickListener() {
+        one.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textView1.append("0 ");
+                gearsView.append("1 ");
             }
         });
 
-        spinnerMed1.setOnClickListener(new View.OnClickListener() {
+        zero.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textView1.append("1 ");
+                gearsView.append("0 ");
             }
         });
 
-        spinnerHard1.setOnClickListener(new View.OnClickListener() {
+        back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textView1.append("2 ");
-            }
-        });
-
-        spinnerFail1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                textView1.append("3 ");
-            }
-        });
-
-        spinnerDelete1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (textView1.getText().length() > 0) {
-                    textView1.setText(textView1.getText().subSequence(0, textView1.getText().length() - 2));
-                }
-            }
-        });
-
-        spinnerEasy2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                textView2.append("0 ");
-            }
-        });
-
-        spinnerMed2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                textView2.append("1 ");
-            }
-        });
-
-        spinnerHard2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                textView2.append("2 ");
-            }
-        });
-
-        spinnerFail2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                textView2.append("3 ");
-            }
-        });
-
-        spinnerDelete2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (textView2.getText().length() > 0) {
-                    textView2.setText(textView2.getText().subSequence(0, textView2.getText().length() - 2));
-                }
-            }
-        });
-
-        spinnerEasy3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                textView3.append("0 ");
-            }
-        });
-
-        spinnerMed3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                textView3.append("1 ");
-            }
-        });
-
-        spinnerHard3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                textView3.append("2 ");
-            }
-        });
-
-        spinnerFail3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                textView3.append("3 ");
-            }
-        });
-
-        spinnerDelete3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (textView3.getText().length() > 0) {
-                    textView3.setText(textView3.getText().subSequence(0, textView3.getText().length() - 2));
-                }
-            }
-        });
-
-        spinnerEasy4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                textView4.append("0 ");
-            }
-        });
-
-        spinnerMed4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                textView4.append("1 ");
-            }
-        });
-
-        spinnerHard4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                textView4.append("2 ");
-            }
-        });
-
-        spinnerFail4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                textView4.append("3 ");
-            }
-        });
-
-        spinnerDelete4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (textView4.getText().length() > 0) {
-                    textView4.setText(textView4.getText().subSequence(0, textView4.getText().length() - 2));
-                }
-            }
-        });
-
-        spinnerEasy5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                textView5.append("0 ");
-            }
-        });
-
-        spinnerMed5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                textView5.append("1 ");
-            }
-        });
-
-        spinnerHard5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                textView5.append("2 ");
-            }
-        });
-
-        spinnerFail5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                textView5.append("3 ");
-            }
-        });
-
-        spinnerDelete5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (textView5.getText().length() > 0) {
-                    textView5.setText(textView5.getText().subSequence(0, textView5.getText().length() - 2));
+                if (gearsView.getText().length() > 0) {
+                    gearsView.setText(gearsView.getText().subSequence(0, gearsView.getText().length() - 2));
                 }
             }
         });
 
 
-        //high and low stuff
-        highHit.setOnClickListener(new View.OnClickListener() {
-            @Override
+        five1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                highView.append("1 ");
+                i += 5;
+                highGoalsView.setText(String.valueOf(i));
             }
+
+        });
+        ten1.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                i += 10;
+                highGoalsView.setText(String.valueOf(i));
+            }
+
+        });
+        twenty1.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                i += 20;
+                highGoalsView.setText(String.valueOf(i));
+            }
+
         });
 
-        highMiss.setOnClickListener(new View.OnClickListener() {
-            @Override
+
+        five2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                highView.append("0 ");
+                j += 5;
+
+                lowGoalView.setText(String.valueOf(j));
             }
+
+        });
+        ten2.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                j += 10;
+                lowGoalView.setText(String.valueOf(j));
+            }
+
+        });
+        twenty2.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                j += 20;
+                lowGoalView.setText(String.valueOf(j));
+            }
+
         });
 
-        highDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (highView.getText().length() > 0) {
-                    highView.setText(highView.getText().subSequence(0, highView.getText().length() - 2));
-                }
-            }
-        });
 
-        lowHit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                lowView.append("1 ");
-            }
-        });
-
-        lowMiss.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                lowView.append("0 ");
-            }
-        });
-
-        lowDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (lowView.getText().length() > 0) {
-                    lowView.setText(lowView.getText().subSequence(0, lowView.getText().length() - 2));
-                }
-            }
-        });
-
-        spinner1 = (TextView) in.findViewById(R.id.textViewLowBar);
-        spinnerD1 = (TextView) in.findViewById(R.id.ratingText1);
-        spinner2 = (TextView) in.findViewById(R.id.textSpinnerA);
-        spinnerD2 = (TextView) in.findViewById(R.id.ratingText2);
-        //spinner2.setText(Autonomous.a.getSelectedItem().toString());
-        spinner3 = (TextView) in.findViewById(R.id.textSpinnerB);
-       // spinner3.setText(Autonomous.b.getSelectedItem().toString());
-        spinnerD3 = (TextView) in.findViewById(R.id.ratingText3);
-        spinner4 = (TextView) in.findViewById(R.id.textSpinnerC);
-        //spinner4.setText(Autonomous.c.getSelectedItem().toString());
-        spinnerD4 = (TextView) in.findViewById(R.id.ratingText4);
-        spinner5 = (TextView) in.findViewById(R.id.textSpinnerD);
-       // spinner5.setText(Autonomous.d.getSelectedItem().toString());
-        spinnerD5 = (TextView) in.findViewById(R.id.ratingText5);
-        highGoalD2 = (TextView) in.findViewById(R.id.highGoalView2);
-        lowGoalD2 = (TextView) in.findViewById(R.id.lowGoalView2);
-
-        return in;
-    };
-
-
-    CompoundButton.OnCheckedChangeListener changeChecker = new CompoundButton.OnCheckedChangeListener() {
-
-        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-            if (isChecked) {
-                if (buttonView != hang) {
-                    hang.setChecked(false);
-                }
-                if (buttonView != challenge) {
-                    challenge.setChecked(false);
-                }
-                if (buttonView != none) {
-                    none.setChecked(false);
-                }
-                if (buttonView == hang) {
-                    String str = "H";
-                    myRobo.setEndGameT(str);
-                }
-                if (buttonView == challenge) {
-                    String str = "CHA";
-                    myRobo.setEndGameT(str);
-                }
-                if (buttonView == none) {
-                    String str = "N";
-                    myRobo.setEndGameT(str);
-                }
-            }
-        }
-    };
-
-
- /*   @Override
-    public RoboInfo getData() {
-        this.teleInfo.matchT = this.matchT; // Assuming subcon has been updated.. else use txt1.getText();
-        return this.teleInfo;
     }
 
-    @Override
-    public void setData(RoboInfo workData) {
-        this.teleInfo = workData;
-        // Update this page's views with the workData...
-        // This assumes the fragment has already been created and txt1 is set to a view
-        this.matchT = workData.matchT; // Actually could just use subCon in workData, but be aware that workData actually points to the Activity's copy (kinda makes getdata redundant.. but I like symmetry and couldn't be bothered making lots of copies of the object).
+    public void addItemsOnSpinner1() {
+        // Spinner Drop down elements
+        List<String> categories = new ArrayList<String>();
+        categories.add("None");
+        categories.add("Very Little");
+        categories.add("Some");
+        categories.add("Most");
+        categories.add("All");
+
+        // Creating adapter for spinner
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
+
+        // Drop down layout style - list view with radio button
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // attaching data adapter to spinner
+        a.setAdapter(dataAdapter);
     }
 
-    public static Teleop newInstance(String a)
-    {
-        Teleop fragment=new Teleop();
-        Bundle bundle=new Bundle();
-        bundle.putString("a", "matchText");
-        fragment.setArguments(bundle);
-        return fragment;
-    }*/
+
+    public void addItemsOnSpinner2() {
+        // Spinner Drop down elements
+        List<String> categories = new ArrayList<String>();
+        categories.add("None");
+        categories.add("Very Little");
+        categories.add("Some");
+        categories.add("Most");
+        categories.add("All");
+
+        // Creating adapter for spinner
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
+
+        // Drop down layout style - list view with radio button
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // attaching data adapter to spinner
+        b.setAdapter(dataAdapter);
+    }
+
+
 }

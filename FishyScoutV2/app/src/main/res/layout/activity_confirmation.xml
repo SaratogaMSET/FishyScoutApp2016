@@ -16,19 +16,25 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Autonomous"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:layout_marginTop="30dp"
-            android:id="@+id/autonomous" />
-
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/autonomousLayout"
-            android:layout_below="@id/autonomous">
+        >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Autonomous"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_marginTop="30dp"
+                android:id="@+id/autonomous" />
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/autonomousRow"
+            />
 
             <TableRow
                 android:layout_width="match_parent"
@@ -106,8 +112,8 @@
                     android:layout_weight=".5"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Spy?"
-                    android:id="@+id/spy" />
+                    android:text="Reached Baseline?"
+                    android:id="@+id/baseline" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -115,7 +121,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text=""
-                    android:id="@+id/spyDisplay" />
+                    android:id="@+id/baselineDisplay" />
             </TableRow>
 
             <TableRow
@@ -128,8 +134,8 @@
                     android:layout_weight=".5"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Reaches Defenses?"
-                    android:id="@+id/reachesDefenses" />
+                    android:text="Gears"
+                    android:id="@+id/gears" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -137,29 +143,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text=""
-                    android:id="@+id/reachesDefensesDisplay" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight=".5"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Crosses Defense"
-                    android:id="@+id/crossesDefense" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight=".5"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text=""
-                    android:id="@+id/crossesDefenseDisplay" />
+                    android:id="@+id/gearsDisplay" />
             </TableRow>
 
             <TableRow
@@ -173,7 +157,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="High Goals"
-                    android:id="@+id/highGoals1" />
+                    android:id="@+id/highGoals" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -181,7 +165,29 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text=""
-                    android:id="@+id/highGoalsDisplay1" />
+                    android:id="@+id/highGoalsDisplay" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight=".5"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Consistency for High Goals"
+                    android:id="@+id/consistencyHighGoal" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight=".5"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text=""
+                    android:id="@+id/consistencyHighGoalDisplay" />
             </TableRow>
 
             <TableRow
@@ -195,7 +201,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Low Goals"
-                    android:id="@+id/lowGoals1" />
+                    android:id="@+id/lowGoal" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -203,7 +209,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text=""
-                    android:id="@+id/lowGoalsDisplay1" />
+                    android:id="@+id/lowGoalDisplay" />
             </TableRow>
 
             <TableRow
@@ -216,8 +222,8 @@
                     android:layout_weight=".5"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Ball(s) Possessed"
-                    android:id="@+id/ballsPossessed" />
+                    android:text="Consistency for Low Goals"
+                    android:id="@+id/consistencyLowGoal" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -225,8 +231,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text=""
-                    android:id="@+id/ballsPossessedDisplay" />
-
+                    android:id="@+id/consistencyLowGoalDisplay" />
             </TableRow>
 
             <TextView
@@ -248,8 +253,8 @@
                     android:layout_weight=".5"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text=""
-                    android:id="@+id/tspinnerDisplay1" />
+                    android:text="Offense or Defense"
+                    android:id="@+id/offenseOrDefense" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -257,7 +262,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text=""
-                    android:id="@+id/ratingDisplay1" />
+                    android:id="@+id/offenseOrDefenseDisplay1" />
             </TableRow>
 
             <TableRow
@@ -270,8 +275,8 @@
                     android:layout_weight=".5"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text=""
-                    android:id="@+id/tspinnerDisplay2" />
+                    android:text="Gears"
+                    android:id="@+id/gears2" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -279,7 +284,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text=""
-                    android:id="@+id/ratingDisplay2" />
+                    android:id="@+id/gearsDisplay2" />
             </TableRow>
 
             <TableRow
@@ -292,8 +297,8 @@
                     android:layout_weight=".5"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text=""
-                    android:id="@+id/tspinnerDisplay3" />
+                    android:text="Cycle Time"
+                    android:id="@+id/cycleTime1" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -301,51 +306,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text=""
-                    android:id="@+id/ratingDisplay3" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight=".5"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text=""
-                    android:id="@+id/tspinnerDisplay4" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight=".5"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text=""
-                    android:id="@+id/ratingDisplay4" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight=".5"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text=""
-                    android:id="@+id/tspinnerDisplay5" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight=".5"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text=""
-                    android:id="@+id/ratingDisplay5" />
+                    android:id="@+id/cycleTimeDisplay1" />
             </TableRow>
 
             <TableRow
@@ -359,7 +320,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="High Goals"
-                    android:id="@+id/highGoals2" />
+                    android:id="@+id/highGoal1" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -367,8 +328,29 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text=""
-                    android:id="@+id/highGoalsDisplay2" />
+                    android:id="@+id/highGoalDisplay1" />
+            </TableRow>
 
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight=".5"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Consistency for High Goals"
+                    android:id="@+id/consistency1" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight=".5"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text=""
+                    android:id="@+id/highGoalConsistencyDisplay1" />
             </TableRow>
 
             <TableRow
@@ -382,7 +364,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Low Goals"
-                    android:id="@+id/lowGoals2" />
+                    android:id="@+id/consistency2" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -390,22 +372,23 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text=""
-                    android:id="@+id/lowGoalsDisplay2" />
-
+                    android:id="@+id/lowGoalDisplay1" />
             </TableRow>
+
 
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp">
 
+
                 <TextView
                     android:layout_width="0dp"
                     android:layout_weight=".5"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Defense?"
-                    android:id="@+id/defense" />
+                    android:text="Consistency for Low Goals"
+                    android:id="@+id/lowGoalConsistency" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -413,9 +396,9 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text=""
-                    android:id="@+id/defenseDisplay" />
-
+                    android:id="@+id/lowGoalConsistencyDisplay1" />
             </TableRow>
+
 
             <TableRow
                 android:layout_width="match_parent"
@@ -482,8 +465,8 @@
                     android:layout_weight=".5"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Breach?"
-                    android:id="@+id/breach" />
+                    android:text="Reached 40kPa?"
+                    android:id="@+id/pressure" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -491,7 +474,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text=""
-                    android:id="@+id/breachDisplay" />
+                    android:id="@+id/pressureDisplay" />
 
             </TableRow>
 
@@ -505,8 +488,8 @@
                     android:layout_weight=".5"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Capture?"
-                    android:id="@+id/capture" />
+                    android:text="Takeoff?"
+                    android:id="@+id/takeoff" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -514,7 +497,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text=""
-                    android:id="@+id/captureDisplay" />
+                    android:id="@+id/takeoffDisplay" />
 
             </TableRow>
 
@@ -566,6 +549,7 @@
 
         </TableLayout>
 
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -576,7 +560,6 @@
             android:onClick="Export"
             android:layout_below="@+id/autonomousLayout"
             android:id="@+id/button" />
-
     </RelativeLayout>
 
 
